@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://vibewithaaruu.runs-on.dev/" />
   <meta property="og:title" content="Vibe With Aaruu" />
   <meta property="og:description" content="Real couple life, festivals, travel, and stories. 67,300 subscribers on YouTube." />
-  <meta property="og:image" content="https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg" />
+  <meta property="og:image" content="https://i.ytimg.com/vi/uwVQSVI1Ehk/oar2.jpg" />
   <meta property="og:url" content="https://vibewithaaruu.runs-on.dev/" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#090909" />
@@ -98,7 +98,7 @@
       position: absolute; inset: 0;
       border-radius: 28px; overflow: hidden;
       border: 1px solid var(--line);
-      background: #111 center 18% / cover no-repeat;
+      background: #111 center center / cover no-repeat;
     }
     .frames { position: relative; width: min(320px, 100%); aspect-ratio: 9/15; }
     .frame.f2 { animation-delay: -6s; }
@@ -214,7 +214,13 @@
     .about h3 { margin: 8px 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 24px; letter-spacing: -0.04em; }
     .about p { margin: 0; color: var(--muted); }
     .promo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .promo .thumb { background-position: center 20%; }
+    .posters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .posters a { text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+    .posters .thumb { aspect-ratio: 16/9; background-position: center center; background-size: cover; }
+    .credits { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+    .credits a { text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 13px; font-weight: 750; background: #121212; }
+    .credits a:hover { border-color: var(--lime); color: var(--lime); }
+    .plat { display: inline-flex; gap: 6px; margin-top: 8px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); }
     .ig { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .ig a {
       text-decoration: none; border: 1px solid var(--line); border-radius: 22px;
@@ -260,7 +266,7 @@
     .short, .long, .feature, .about article, .ig a { animation: rise .7s ease both; }
     @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
     @media (max-width: 860px) {
-      .hero, .wall, .about, .finale, .promo, .ig, .collab-cta { grid-template-columns: 1fr; display: grid; }
+      .hero, .wall, .about, .finale, .promo, .ig, .collab-cta, .posters { grid-template-columns: 1fr; display: grid; }
       .finale, .collab-cta { display: grid; }
       .nav-links a:not(.btn) { display: none; }
       .stage { min-height: 320px; }
@@ -306,9 +312,9 @@
       <div class="stage">
         <div class="frames">
           <a class="stamp" href="https://www.youtube.com/@vibewithaaruu?sub_confirmation=1">SUBSCRIBE<br />NOW</a>
-          <a class="frame" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg')" href="https://www.youtube.com/shorts/uwVQSVI1Ehk" aria-label="Latest short, EMI Karwa Chauth and Diwali"></a>
-          <span class="frame f2" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/hqdefault.jpg')"></span>
-          <span class="frame f3" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/hqdefault.jpg')"></span>
+          <a class="frame" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/oar2.jpg')" href="https://www.youtube.com/shorts/uwVQSVI1Ehk" aria-label="Latest short, EMI Karwa Chauth and Diwali"></a>
+          <span class="frame f2" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/oar2.jpg')"></span>
+          <span class="frame f3" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg')"></span>
           <span class="chip-live">Latest · 24 Oct</span>
         </div>
       </div>
@@ -349,43 +355,43 @@
       <p class="sub">Newest shorts. Tap a thumbnail to watch on YouTube.</p>
       <div class="reel">
         <a class="short" href="https://www.youtube.com/shorts/uwVQSVI1Ehk">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg')"><em>24 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/oar2.jpg')"><em>24 Oct</em></div>
           <div class="meta"><strong>EMI, Karwa Chauth &amp; Diwali at once</strong><small>The real struggle</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/uc8Rbaua3fU">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/hqdefault.jpg')"><em>23 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg')"><em>23 Oct</em></div>
           <div class="meta"><strong>Hollyland Lark A1 unboxing</strong><small>Wireless mic, ASMR</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/cL8UWFqbc70">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/cL8UWFqbc70/hqdefault.jpg')"><em>21 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/cL8UWFqbc70/oar2.jpg')"><em>21 Oct</em></div>
           <div class="meta"><strong>Navratri to Diwali reality</strong><small>Diwali ki safayi begins</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/ONj_z8r7_Os">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/hqdefault.jpg')"><em>20 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/oar2.jpg')"><em>20 Oct</em></div>
           <div class="meta"><strong>Unwrapping our dream car</strong><small>The best feeling ever</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/IUqYtr4QdH4">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/IUqYtr4QdH4/hqdefault.jpg')"><em>20 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/IUqYtr4QdH4/oar2.jpg')"><em>20 Oct</em></div>
           <div class="meta"><strong>Spectacular Ravana Dahan</strong><small>Dussehra night</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/vdL2jA5HVjI">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vdL2jA5HVjI/hqdefault.jpg')"><em>18 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vdL2jA5HVjI/oar2.jpg')"><em>18 Oct</em></div>
           <div class="meta"><strong>2 high-maintenance things in Harshit’s life</strong><small>Couple comedy</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/djef0bOibR4">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/djef0bOibR4/hqdefault.jpg')"><em>19 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/djef0bOibR4/oar2.jpg')"><em>19 Oct</em></div>
           <div class="meta"><strong>That unmatched Navratri feeling</strong><small>Gujarati garba</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/LKAMQCC05Oc">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/LKAMQCC05Oc/hqdefault.jpg')"><em>18 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/LKAMQCC05Oc/oar2.jpg')"><em>18 Oct</em></div>
           <div class="meta"><strong>Non-stop garba dance</strong><small>Festive nights</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/neS8Vvg15aA">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/neS8Vvg15aA/hqdefault.jpg')"><em>16 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/neS8Vvg15aA/oar2.jpg')"><em>16 Oct</em></div>
           <div class="meta"><strong>The hardest part of garba night</strong><small>Navratri comedy</small></div>
         </a>
         <a class="short" href="https://www.youtube.com/shorts/TrUNY5vBl_E">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TrUNY5vBl_E/hqdefault.jpg')"><em>12 Oct</em></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TrUNY5vBl_E/oar2.jpg')"><em>12 Oct</em></div>
           <div class="meta"><strong>Crazy crowd energy</strong><small>IND vs WI, Indore</small></div>
         </a>
       </div>
@@ -396,7 +402,7 @@
       <p class="sub">Match day, bhajan night, and the full stadium cut.</p>
       <div class="wall">
         <a class="feature" href="https://www.youtube.com/watch?v=f0KftHTgdsQ">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/f0KftHTgdsQ/hqdefault.jpg')"></div>
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/f0KftHTgdsQ/maxresdefault.jpg')"></div>
           <div class="shade">
             <p class="kicker">17 Oct · full video</p>
             <h2>The insane energy at Holkar Stadium</h2>
@@ -405,15 +411,15 @@
         </a>
         <div class="stack">
           <a class="long" href="https://www.youtube.com/watch?v=2iP_K4rZge0">
-            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/2iP_K4rZge0/hqdefault.jpg')"></div>
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/2iP_K4rZge0/maxresdefault.jpg')"></div>
             <div class="meta"><strong>Crazy IND vs WI match vibe</strong><small>12 Oct · Holkar Stadium</small></div>
           </a>
           <a class="long" href="https://www.youtube.com/watch?v=bf0lf8SaAnY">
-            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/bf0lf8SaAnY/hqdefault.jpg')"></div>
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/bf0lf8SaAnY/maxresdefault.jpg')"></div>
             <div class="meta"><strong>Live Bhajan Sandhya, Indore</strong><small>19 Oct · Lalit Kumar Bansiwal</small></div>
           </a>
           <a class="long" href="https://www.youtube.com/shorts/vvvkRMLdAE4">
-            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vvvkRMLdAE4/hqdefault.jpg')"></div>
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vvvkRMLdAE4/oar2.jpg')"></div>
             <div class="meta"><strong>The real reason behind Ravana’s downfall</strong><small>20 Oct · short</small></div>
           </a>
         </div>
@@ -422,49 +428,42 @@
 
     <section id="collab">
       <h2>Brand collabs.</h2>
-      <p class="sub">Product stories already on the channel. Honest reviews, unboxings, and brand promotions.</p>
+      <p class="sub">The same credits that sit on the YouTube videos, plus the Instagram collab. Tap a name, then the picture.</p>
+      <div class="credits">
+        <a href="https://www.instagram.com/reel/De12NAbycxv/">Hollyland · Instagram</a>
+        <a href="https://www.youtube.com/shorts/uc8Rbaua3fU">Hollyland · YouTube</a>
+        <a href="https://www.youtube.com/shorts/geDjWW-WMyo">Brillare</a>
+        <a href="https://www.youtube.com/shorts/qKnEqYeM85k">HRX · Myntra</a>
+        <a href="https://www.youtube.com/shorts/TE1wmRavCnA">Campus · credit</a>
+        <a href="https://www.youtube.com/shorts/ah9kLAfMPb0">MARS</a>
+        <a href="https://www.youtube.com/shorts/fpIZEMr5Vpw">Blue Heaven</a>
+        <a href="https://www.youtube.com/shorts/cxCDHg4ZN6w">Kajal</a>
+        <a href="https://www.youtube.com/shorts/TAAtG3-w3t0">Lipsticks</a>
+      </div>
       <div class="promo">
-        <a class="short" href="https://www.youtube.com/shorts/uc8Rbaua3fU">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/hqdefault.jpg')"><em>Hollyland</em></div>
-          <div class="meta"><strong>Lark A1 wireless mic unboxing</strong><small>23 Oct · brand feature</small></div>
-        </a>
-        <a class="short" href="https://www.youtube.com/shorts/4rHig0QSWt8">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/4rHig0QSWt8/hqdefault.jpg')"><em>Brillare</em></div>
-          <div class="meta"><strong>Acne and oily skin face wash</strong><small>Worth it? Honest review</small></div>
-        </a>
-        <a class="short" href="https://www.youtube.com/shorts/qKnEqYeM85k">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/qKnEqYeM85k/hqdefault.jpg')"><em>HRX</em></div>
-          <div class="meta"><strong>10 min delivery, Myntra</strong><small>HRX joggers review</small></div>
-        </a>
-        <a class="short" href="https://www.youtube.com/shorts/TE1wmRavCnA">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TE1wmRavCnA/hqdefault.jpg')"><em>Campus</em></div>
-          <div class="meta"><strong>Campus shoes review</strong><small>Sneakers, honest take</small></div>
-        </a>
-        <a class="short" href="https://www.youtube.com/shorts/ah9kLAfMPb0">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/ah9kLAfMPb0/hqdefault.jpg')"><em>MARS</em></div>
-          <div class="meta"><strong>Fantasy palette</strong><small>Worth it or waste?</small></div>
-        </a>
-        <a class="short" href="https://www.youtube.com/shorts/fpIZEMr5Vpw">
-          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/fpIZEMr5Vpw/hqdefault.jpg')"><em>Blue Heaven</em></div>
-          <div class="meta"><strong>Kajal and mascara, ₹99</strong><small>Honest review</small></div>
-        </a>
+        <a class="short" href="https://www.instagram.com/reel/De12NAbycxv/"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg')"><em>Instagram</em></div><div class="meta"><strong>Hollyland Lark A1 unboxing</strong><small>@hollyland.india · collab reel</small><span class="plat">Instagram credit</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/uc8Rbaua3fU"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg')"><em>Hollyland</em></div><div class="meta"><strong>Lark A1 wireless mic</strong><small>Same collab on YouTube</small><span class="plat">YouTube</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/TE1wmRavCnA"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TE1wmRavCnA/oar2.jpg')"><em>Campus</em></div><div class="meta"><strong>Campus sneakers review</strong><small>YouTube auto credit on this video</small><span class="plat">YouTube credit</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/geDjWW-WMyo"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/geDjWW-WMyo/oar2.jpg')"><em>Brillare</em></div><div class="meta"><strong>Brillare face wash</strong><small>Honest review</small><span class="plat">YouTube</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/qKnEqYeM85k"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/qKnEqYeM85k/oar2.jpg')"><em>HRX</em></div><div class="meta"><strong>HRX joggers, 10 min Myntra</strong><small>Unboxing and review</small><span class="plat">YouTube</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/cxCDHg4ZN6w"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/cxCDHg4ZN6w/oar2.jpg')"><em>Kajal</em></div><div class="meta"><strong>Kajal and mascara, ₹150</strong><small>Worth it? Honest test</small><span class="plat">YouTube</span></div></a>
+        <a class="short" href="https://www.youtube.com/shorts/TAAtG3-w3t0"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TAAtG3-w3t0/oar2.jpg')"><em>Lips</em></div><div class="meta"><strong>5 matte lipsticks, ₹138</strong><small>Worth it or not</small><span class="plat">YouTube</span></div></a>
+      </div>
+      <div class="posters">
+        <a href="https://www.youtube.com/shorts/ah9kLAfMPb0"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/ah9kLAfMPb0/sddefault.jpg')"></div><div class="meta"><strong>MARS Fantasy palette</strong><small>The YouTube poster, full frame</small><span class="plat">YouTube</span></div></a>
+        <a href="https://www.youtube.com/shorts/yEkZRh1hqEY"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/yEkZRh1hqEY/sddefault.jpg')"></div><div class="meta"><strong>MARS lip liner, ₹49</strong><small>Honest review</small><span class="plat">YouTube</span></div></a>
+        <a href="https://www.youtube.com/shorts/fpIZEMr5Vpw"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/fpIZEMr5Vpw/sddefault.jpg')"></div><div class="meta"><strong>Blue Heaven kajal and mascara</strong><small>₹99 honest review</small><span class="plat">YouTube</span></div></a>
+        <a href="https://www.youtube.com/shorts/4rHig0QSWt8"><div class="thumb" style="background-image:url('https://i.ytimg.com/vi/4rHig0QSWt8/sddefault.jpg')"></div><div class="meta"><strong>Brillare face wash, ₹149</strong><small>Ingredients test</small><span class="plat">YouTube</span></div></a>
       </div>
       <div class="collab-cta">
-        <div>
-          <p class="kicker">Work with us</p>
-          <h2>Contact us for a collab.</h2>
-          <p class="sub">Brands, write to either of us. We read every note.</p>
-        </div>
-        <div class="mails">
-          <a class="btn ghost" href="mailto:harshitmodi98@gmail.com">harshitmodi98@gmail.com</a>
-          <a class="btn ghost" href="mailto:lifewithaarushi661@gmail.com">lifewithaarushi661@gmail.com</a>
-        </div>
+        <div><p class="kicker">Work with us</p><h2>Contact us for a collab.</h2><p class="sub">Brands, write to either of us. We read every note.</p></div>
+        <div class="mails"><a class="btn ghost" href="mailto:harshitmodi98@gmail.com">harshitmodi98@gmail.com</a><a class="btn ghost" href="mailto:lifewithaarushi661@gmail.com">lifewithaarushi661@gmail.com</a></div>
       </div>
     </section>
 
     <section id="instagram">
       <h2>On Instagram.</h2>
-      <p class="sub">Harshit, Aarushi, and Knotted Hearts. Tap a card to open the profile.</p>
+      <p class="sub">The Hollyland collab reel is above. These are the three profiles.</p>
       <div class="ig">
         <a href="https://www.instagram.com/harshittt_modi_/">
           <span class="ig-mark">IG</span>
