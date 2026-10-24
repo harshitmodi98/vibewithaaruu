@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe With Aaruu · real couple life on YouTube</title>
+  <meta name="description" content="Vibe With Aaruu is Aarushi and Harshit's YouTube channel. 67,300 subscribers, 58,129,366 views, 229 videos. Couple life, festivals, travel, and stories from India." />
+  <link rel="canonical" href="https://vibewithaaruu.runs-on.dev/" />
+  <meta property="og:title" content="Vibe With Aaruu" />
+  <meta property="og:description" content="Real couple life, festivals, travel, and stories. 67,300 subscribers on YouTube." />
+  <meta property="og:image" content="https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg" />
+  <meta property="og:url" content="https://vibewithaaruu.runs-on.dev/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#090909" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090909'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23ff2d2d'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #090909;
+      --bg-2: #121212;
+      --ink: #f6f1e7;
+      --muted: #b9b1a4;
+      --red: #ff2d2d;
+      --lime: #d6ff4a;
+      --line: rgba(246, 241, 231, 0.14);
+      --card: #161616;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: Figtree, system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0;
+      background: linear-gradient(90deg, var(--lime), var(--red));
+      z-index: 50;
+    }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0 12px;
+      background: linear-gradient(#090909, rgba(9,9,9,.86) 70%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; }
+    .mark {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--red); display: grid; place-items: center;
+      box-shadow: 0 0 0 6px rgba(255,45,45,.15);
+    }
+    .mark i { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; margin-left: 2px; }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; border-radius: 999px; padding: 12px 18px;
+      font-weight: 700; border: 0; font-family: inherit; cursor: pointer;
+    }
+    .btn.sub {
+      background: var(--red); color: white;
+      animation: beat 2.4s ease-in-out infinite;
+    }
+    .btn.ghost { border: 1px solid var(--line); color: var(--ink); background: transparent; }
+    @keyframes beat {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,45,45,.45); }
+      50% { box-shadow: 0 0 0 10px rgba(255,45,45,0); }
+    }
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 36px; align-items: end; padding: 18px 0 28px; }
+    .kicker {
+      color: var(--lime); letter-spacing: .18em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; margin: 0 0 10px;
+    }
+    h1 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800; letter-spacing: -0.06em;
+      font-size: clamp(64px, 11vw, 132px);
+      line-height: .82; margin: 0;
+    }
+    h1 .ghost {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--ink);
+      margin-left: .08em;
+    }
+    h1 .lime { color: var(--lime); display: block; }
+    .lede { color: var(--muted); font-size: 18px; max-width: 460px; margin: 18px 0; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stage { position: relative; display: grid; justify-items: end; min-height: 520px; }
+    .frame {
+      position: absolute; inset: 0;
+      border-radius: 28px; overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111 center 18% / cover no-repeat;
+    }
+    .frames { position: relative; width: min(320px, 100%); aspect-ratio: 9/15; }
+    .frame.f2 { animation-delay: -6s; }
+    .frame.f3 { animation-delay: -12s; }
+    .frame::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55), transparent 45%);
+    }
+    .frames .frame { opacity: 0; animation: fadeShow 12s infinite; pointer-events: none; }
+    .frames .frame:nth-child(2) { pointer-events: auto; animation-delay: 0s; }
+    .frames .frame:nth-child(3) { animation-delay: 4s; }
+    .frames .frame:nth-child(4) { animation-delay: 8s; }
+    .feature h2 { font-size: clamp(28px, 4vw, 44px); }
+    @keyframes fadeShow {
+      0%, 26% { opacity: 1; }
+      34%, 100% { opacity: 0; }
+    }
+    @keyframes ken { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .stamp {
+      position: absolute; left: 0; top: 0; z-index: 2;
+      width: 116px; height: 116px; border-radius: 50%;
+      display: grid; place-items: center; text-align: center;
+      background: var(--lime); color: #111; font-weight: 800; font-size: 13px;
+      transform: rotate(-12deg);
+      animation: wobble 5s ease-in-out infinite;
+      text-decoration: none; line-height: 1.15;
+    }
+    @keyframes wobble { 50% { transform: rotate(8deg) scale(1.04); } }
+    .chip-live {
+      position: absolute; right: 16px; bottom: 16px; z-index: 2;
+      background: rgba(0,0,0,.7); border-radius: 999px; padding: 6px 10px; font-size: 12px;
+    }
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin: 8px 0 26px;
+    }
+    .stat {
+      border-top: 1px solid var(--line); padding-top: 12px;
+    }
+    .stat b {
+      display: block; font-family: "Bricolage Grotesque", sans-serif;
+      font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.05em; line-height: 1;
+    }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .note { color: var(--muted); font-size: 13px; margin: -12px 0 28px; }
+    .marquee {
+      overflow: hidden; border-block: 1px solid var(--line);
+      background: #0e0e0e;
+    }
+    .track {
+      display: flex; gap: 28px; white-space: nowrap;
+      padding: 12px 0; width: max-content;
+      animation: slide 38s linear infinite;
+    }
+    .marquee:hover .track { animation-play-state: paused; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .track span { font-weight: 650; }
+    .track i { color: var(--lime); font-style: normal; }
+    section { padding: 42px 0; }
+    h2 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.05em;
+      line-height: .95; margin: 0 0 8px;
+    }
+    .sub { color: var(--muted); margin: 0 0 18px; }
+    .reel {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 180px;
+      gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+    .reel a, .wall a, .long a { text-decoration: none; color: inherit; }
+    .short {
+      scroll-snap-align: start; background: var(--card);
+      border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
+    }
+    .short .thumb, .long .thumb, .feature .thumb {
+      background: #222 center/cover no-repeat; position: relative;
+    }
+    .short .thumb { aspect-ratio: 9/15; }
+    .thumb em {
+      position: absolute; left: 8px; top: 8px; font-style: normal;
+      background: var(--lime); color: #111; font-size: 11px; font-weight: 800;
+      border-radius: 999px; padding: 3px 7px;
+    }
+    .meta { padding: 10px 10px 12px; }
+    .meta strong { display: block; font-size: 14px; line-height: 1.3; }
+    .meta small { color: var(--muted); }
+    .wall { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
+    .feature {
+      display: block; position: relative; border-radius: 24px; overflow: hidden; min-height: 360px;
+      border: 1px solid var(--line);
+    }
+    .feature .thumb { position: absolute; inset: 0; }
+    .feature .shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.35) 48%, transparent 70%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;
+    }
+    .feature .shade h2, .feature .shade p, .feature .kicker { text-shadow: 0 2px 18px #000; }
+    .stack { display: grid; gap: 12px; }
+    .long {
+      display: grid; grid-template-columns: 168px 1fr; gap: 12px; align-items: center;
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    }
+    .long .thumb { aspect-ratio: 16/10; min-height: 100%; }
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+    }
+    .about article {
+      border: 1px solid var(--line); border-radius: 22px; padding: 20px; min-height: 180px;
+      background: linear-gradient(180deg, #171717, #101010);
+    }
+    .about h3 { margin: 8px 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 24px; letter-spacing: -0.04em; }
+    .about p { margin: 0; color: var(--muted); }
+    .finale {
+      margin: 10px 0 30px; border-radius: 32px; padding: 36px;
+      background:
+        radial-gradient(500px 200px at 90% 0%, rgba(214,255,74,.2), transparent 60%),
+        #ff2d2d;
+      color: white;
+      display: flex; justify-content: space-between; gap: 20px; align-items: center;
+    }
+    .finale h2 { margin: 0 0 8px; }
+    .finale p { margin: 0; max-width: 460px; }
+    .finale .btn { background: #fff; color: #111; }
+    footer {
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      color: var(--muted); font-size: 14px; padding: 10px 0 80px;
+    }
+    footer a { color: var(--lime); }
+    .short, .long, .feature, .about article { animation: rise .7s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 860px) {
+      .hero, .wall, .about, .finale { grid-template-columns: 1fr; display: grid; }
+      .finale { display: grid; }
+      .nav-links a:not(.btn) { display: none; }
+      .stage { min-height: 320px; }
+      .long { grid-template-columns: 120px 1fr; }
+      h1 { font-size: 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important; transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i></span> Vibe With Aaruu</a>
+      <nav class="nav-links">
+        <a href="#reel">Videos</a>
+        <a href="#about">About</a>
+        <a href="https://www.youtube.com/@vibewithaaruu">Channel</a>
+        <a class="btn sub" href="https://www.youtube.com/@vibewithaaruu?sub_confirmation=1">Subscribe</a>
+      </nav>
+    </header>
+
+    <main id="top" class="hero">
+      <div>
+        <p class="kicker">India · Couple · Travel · Stories</p>
+        <h1>
+          <span>VIBE</span>
+          <span class="ghost">WITH</span>
+          <span class="lime">AARUU</span>
+        </h1>
+        <p class="lede">Hi, I’m Aarushi. This is our YouTube channel with Harshit. Real couple moments, festivals, travel, and the everyday things that never make the script.</p>
+        <div class="cta">
+          <a class="btn sub" href="https://www.youtube.com/@vibewithaaruu?sub_confirmation=1">Subscribe · it’s free</a>
+          <a class="btn ghost" href="https://www.youtube.com/shorts/uwVQSVI1Ehk">Play the latest</a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="frames">
+          <a class="stamp" href="https://www.youtube.com/@vibewithaaruu?sub_confirmation=1">SUBSCRIBE<br />NOW</a>
+          <a class="frame" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg')" href="https://www.youtube.com/shorts/uwVQSVI1Ehk" aria-label="Latest short, EMI Karwa Chauth and Diwali"></a>
+          <span class="frame f2" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/hqdefault.jpg')"></span>
+          <span class="frame f3" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/hqdefault.jpg')"></span>
+          <span class="chip-live">Latest · 24 Oct</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="stats" aria-label="YouTube totals">
+      <div class="stat"><b class="count" data-to="67300">67,300</b><span>subscribers</span></div>
+      <div class="stat"><b class="count" data-to="5.81" data-suffix=" Cr" data-digits="2">5.81 Cr</b><span>views</span></div>
+      <div class="stat"><b class="count" data-to="229">229</b><span>videos</span></div>
+    </div>
+    <p class="note">Public YouTube totals · 58,129,366 views · @vibewithaaruu · People &amp; Blogs · India</p>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>When EMI, Karwa Chauth &amp; Diwali hit at once <i>✦</i></span>
+      <span>Unwrapping our dream car <i>✦</i></span>
+      <span>Hollyland Lark A1 unboxing <i>✦</i></span>
+      <span>Diwali ki safayi <i>✦</i></span>
+      <span>Ravana Dahan <i>✦</i></span>
+      <span>Garba nights <i>✦</i></span>
+      <span>Holkar Stadium, IND vs WI <i>✦</i></span>
+      <span>High-maintenance Harshit <i>✦</i></span>
+      <span>When EMI, Karwa Chauth &amp; Diwali hit at once <i>✦</i></span>
+      <span>Unwrapping our dream car <i>✦</i></span>
+      <span>Hollyland Lark A1 unboxing <i>✦</i></span>
+      <span>Diwali ki safayi <i>✦</i></span>
+      <span>Ravana Dahan <i>✦</i></span>
+      <span>Garba nights <i>✦</i></span>
+      <span>Holkar Stadium, IND vs WI <i>✦</i></span>
+      <span>High-maintenance Harshit <i>✦</i></span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="reel">
+      <h2>The reel.</h2>
+      <p class="sub">Newest shorts. Tap a thumbnail to watch on YouTube.</p>
+      <div class="reel">
+        <a class="short" href="https://www.youtube.com/shorts/uwVQSVI1Ehk">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uwVQSVI1Ehk/hqdefault.jpg')"><em>24 Oct</em></div>
+          <div class="meta"><strong>EMI, Karwa Chauth &amp; Diwali at once</strong><small>The real struggle</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/uc8Rbaua3fU">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/uc8Rbaua3fU/hqdefault.jpg')"><em>23 Oct</em></div>
+          <div class="meta"><strong>Hollyland Lark A1 unboxing</strong><small>Wireless mic, ASMR</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/cL8UWFqbc70">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/cL8UWFqbc70/hqdefault.jpg')"><em>21 Oct</em></div>
+          <div class="meta"><strong>Navratri to Diwali reality</strong><small>Diwali ki safayi begins</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/ONj_z8r7_Os">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/ONj_z8r7_Os/hqdefault.jpg')"><em>20 Oct</em></div>
+          <div class="meta"><strong>Unwrapping our dream car</strong><small>The best feeling ever</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/IUqYtr4QdH4">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/IUqYtr4QdH4/hqdefault.jpg')"><em>20 Oct</em></div>
+          <div class="meta"><strong>Spectacular Ravana Dahan</strong><small>Dussehra night</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/vdL2jA5HVjI">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vdL2jA5HVjI/hqdefault.jpg')"><em>18 Oct</em></div>
+          <div class="meta"><strong>2 high-maintenance things in Harshit’s life</strong><small>Couple comedy</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/djef0bOibR4">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/djef0bOibR4/hqdefault.jpg')"><em>19 Oct</em></div>
+          <div class="meta"><strong>That unmatched Navratri feeling</strong><small>Gujarati garba</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/LKAMQCC05Oc">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/LKAMQCC05Oc/hqdefault.jpg')"><em>18 Oct</em></div>
+          <div class="meta"><strong>Non-stop garba dance</strong><small>Festive nights</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/neS8Vvg15aA">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/neS8Vvg15aA/hqdefault.jpg')"><em>16 Oct</em></div>
+          <div class="meta"><strong>The hardest part of garba night</strong><small>Navratri comedy</small></div>
+        </a>
+        <a class="short" href="https://www.youtube.com/shorts/TrUNY5vBl_E">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/TrUNY5vBl_E/hqdefault.jpg')"><em>12 Oct</em></div>
+          <div class="meta"><strong>Crazy crowd energy</strong><small>IND vs WI, Indore</small></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="stories">
+      <h2>Longer watches.</h2>
+      <p class="sub">Match day, bhajan night, and the full stadium cut.</p>
+      <div class="wall">
+        <a class="feature" href="https://www.youtube.com/watch?v=f0KftHTgdsQ">
+          <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/f0KftHTgdsQ/hqdefault.jpg')"></div>
+          <div class="shade">
+            <p class="kicker">17 Oct · full video</p>
+            <h2>The insane energy at Holkar Stadium</h2>
+            <p>IND vs WI, 3rd T20I, Indore.</p>
+          </div>
+        </a>
+        <div class="stack">
+          <a class="long" href="https://www.youtube.com/watch?v=2iP_K4rZge0">
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/2iP_K4rZge0/hqdefault.jpg')"></div>
+            <div class="meta"><strong>Crazy IND vs WI match vibe</strong><small>12 Oct · Holkar Stadium</small></div>
+          </a>
+          <a class="long" href="https://www.youtube.com/watch?v=bf0lf8SaAnY">
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/bf0lf8SaAnY/hqdefault.jpg')"></div>
+            <div class="meta"><strong>Live Bhajan Sandhya, Indore</strong><small>19 Oct · Lalit Kumar Bansiwal</small></div>
+          </a>
+          <a class="long" href="https://www.youtube.com/shorts/vvvkRMLdAE4">
+            <div class="thumb" style="background-image:url('https://i.ytimg.com/vi/vvvkRMLdAE4/hqdefault.jpg')"></div>
+            <div class="meta"><strong>The real reason behind Ravana’s downfall</strong><small>20 Oct · short</small></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>What you’ll find.</h2>
+      <p class="sub">From the channel, in our own words.</p>
+      <div class="about">
+        <article>
+          <p class="kicker">01</p>
+          <h3>Real couple moments</h3>
+          <p>Heart-touching bits and the everyday fun. Including the high-maintenance things in Harshit’s life.</p>
+        </article>
+        <article>
+          <p class="kicker">02</p>
+          <h3>Travel and festivals</h3>
+          <p>Garba, Dussehra, Diwali safai, first flights, and the places we keep going back to across India.</p>
+        </article>
+        <article>
+          <p class="kicker">03</p>
+          <h3>Relatable life</h3>
+          <p>EMIs, work, and the “that’s so me” moments. No filter, no pretend.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="finale">
+      <div>
+        <h2>Come vibe with us.</h2>
+        <p>67,300 people already subscribed. New shorts land almost every day. Hit subscribe so the next one finds you.</p>
+      </div>
+      <a class="btn" href="https://www.youtube.com/@vibewithaaruu?sub_confirmation=1">Subscribe to Vibe With Aaruu</a>
+    </section>
+
+    <footer>
+      <div>© 2026 Vibe With Aaruu · <a href="https://www.youtube.com/@vibewithaaruu">youtube.com/@vibewithaaruu</a></div>
+      <div>Collabs · <a href="mailto:harshitmodi98@gmail.com">harshitmodi98@gmail.com</a> · <a href="mailto:aarushimodi98@gmail.com">aarushimodi98@gmail.com</a></div>
+    </footer>
+  </div>
+  <script>
+    const bar = document.getElementById('progress');
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const format = (n, digits) => Number(n).toLocaleString('en-IN', {
+      minimumFractionDigits: digits, maximumFractionDigits: digits
+    });
+    const counters = [...document.querySelectorAll('.count')];
+    const run = (el) => {
+      const to = Number(el.dataset.to);
+      const digits = Number(el.dataset.digits || 0);
+      const suffix = el.dataset.suffix || '';
+      if (reduce) return;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / 1200);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = format(to * eased, digits) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        run(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
