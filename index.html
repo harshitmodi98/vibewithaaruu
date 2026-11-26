@@ -12,12 +12,12 @@
   <meta property="og:url" content="https://harshitmodi98.github.io/vibewithaaruu/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0d0a10" />
+  <meta name="theme-color" content="#08060b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://i.ytimg.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090909'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23ff2d2d'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffb547'/%3E%3Cstop offset='.5' stop-color='%23ff4d6d'/%3E%3Cstop offset='1' stop-color='%23b45cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Cpath d='M26 20v24l19-12z' fill='white'/%3E%3C/svg%3E" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,636 +36,1039 @@
   }
   </script>
   <style>
+    @property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
     :root {
-      --bg: #0d0a10;
-      --bg-2: #151019;
-      --ink: #fbf4ec;
-      --muted: #bfb2b8;
+      --bg: #08060b;
+      --bg-2: #120d17;
+      --ink: #fff7f0;
+      --muted: #b4a8b3;
+      --dim: #6f6370;
+      --line: rgba(255, 247, 240, 0.1);
+      --line-2: rgba(255, 247, 240, 0.18);
+      --glass: rgba(255, 255, 255, 0.04);
+      --glass-2: rgba(255, 255, 255, 0.07);
       --red: #ff2d55;
-      --lime: #ffb547;
-      --pink: #ff6fa5;
-      --sunset: linear-gradient(100deg, #ffb547 0%, #ff6f61 45%, #ff6fa5 100%);
-      --line: rgba(251, 244, 236, 0.12);
-      --card: rgba(255,255,255,0.045);
+      --amber: #ffb547;
+      --coral: #ff6f61;
+      --pink: #ff5fa2;
+      --violet: #b45cff;
+      --lime: #d4ff4f;
+      --grad: linear-gradient(100deg, #ffb547 0%, #ff6f61 35%, #ff5fa2 65%, #b45cff 100%);
+      --ease: cubic-bezier(.2, .8, .2, 1);
+      --r: 28px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--bg);
-      font-family: Figtree, system-ui, sans-serif;
-      line-height: 1.5;
-      overflow-x: hidden;
+      margin: 0; color: var(--ink); background: var(--bg);
+      font-family: Figtree, system-ui, sans-serif; line-height: 1.5;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
     }
+    html, body { overflow-x: clip; }
+    body.loading { overflow: hidden; }
     img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-    .progress {
-      position: fixed; top: 0; left: 0; height: 3px; width: 0;
-      background: linear-gradient(90deg, var(--lime), var(--red));
-      z-index: 50;
-    }
-    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    ::selection { background: var(--pink); color: #fff; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 12px; }
+    .wrap { width: min(1240px, calc(100% - 32px)); margin: 0 auto; }
+    .serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+    .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-    /* nav */
+    /* ---------- ambient background ---------- */
+    .aurora { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+    .aurora i {
+      position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5;
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+    .aurora i:nth-child(1) { width: 52vw; height: 52vw; background: #ff6f61; left: -14vw; top: -18vw; }
+    .aurora i:nth-child(2) { width: 44vw; height: 44vw; background: #b45cff; right: -12vw; top: 8vh; animation-duration: 28s; opacity: .35; }
+    .aurora i:nth-child(3) { width: 38vw; height: 38vw; background: #ffb547; left: 30vw; top: 60vh; animation-duration: 34s; opacity: .22; }
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(6vw, 4vh) scale(1.12); }
+      100% { transform: translate(-4vw, 8vh) scale(.95); }
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 1s steps(6) infinite;
+    }
+    @keyframes grain {
+      0% { background-position: 0 0; } 20% { background-position: -40px 25px; } 40% { background-position: 30px -45px; }
+      60% { background-position: -25px -10px; } 80% { background-position: 45px 40px; } 100% { background-position: 0 0; }
+    }
+    .grid-bg {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%);
+      opacity: .5;
+    }
+
+    /* ---------- preloader ---------- */
+    .loader {
+      position: fixed; inset: 0; z-index: 200; background: var(--bg);
+      display: grid; place-items: center; transition: transform 1s var(--ease) .1s;
+    }
+    .loader.done { transform: translateY(-100%); }
+    .loader-inner { text-align: center; }
+    .loader-word { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(48px, 10vw, 120px); letter-spacing: -0.06em; line-height: 1; overflow: hidden; }
+    .loader-word span { display: inline-block; animation: up .8s var(--ease) both; }
+    .loader-word .serif { animation-delay: .08s; }
+    .loader-word span:last-child { animation-delay: .16s; }
+    .loader-num { margin-top: 14px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .2em; font-size: 13px; }
+    .loader-bar { width: 180px; height: 2px; margin: 12px auto 0; background: var(--line); border-radius: 2px; overflow: hidden; }
+    .loader-bar i { display: block; height: 100%; width: 0; background: var(--grad); }
+    @keyframes up { from { transform: translateY(110%); } to { transform: none; } }
+
+    /* ---------- cursor ---------- */
+    .cursor, .cursor-ring { position: fixed; left: 0; top: 0; z-index: 150; pointer-events: none; border-radius: 50%; display: none; }
+    .cursor { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: #fff; mix-blend-mode: difference; }
+    .cursor-ring {
+      width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid rgba(255,255,255,.5);
+      display: none; place-items: center; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      transition: width .35s var(--ease), height .35s var(--ease), margin .35s var(--ease), background .35s, border-color .35s;
+    }
+    .cursor-ring span { opacity: 0; transition: opacity .2s; color: #1a0c12; }
+    .cursor-ring.hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: var(--pink); background: rgba(255,95,162,.12); }
+    .cursor-ring.label { width: 86px; height: 86px; margin: -43px 0 0 -43px; background: var(--grad); border-color: transparent; }
+    .cursor-ring.label span { opacity: 1; }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor { display: block; }
+      .cursor-ring { display: grid; }
+    }
+
+    /* ---------- progress + nav ---------- */
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--grad); z-index: 60; }
+    .nav-shell { position: fixed; top: 14px; left: 0; right: 0; z-index: 50; transition: transform .5s var(--ease); }
+    .nav-shell.hide { transform: translateY(-140%); }
     .nav {
-      position: sticky; top: 0; z-index: 20;
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 16px 0 12px;
-      background: linear-gradient(#0d0a10, rgba(13,10,16,.82) 70%, transparent);
-      backdrop-filter: blur(8px);
+      padding: 8px 8px 8px 16px; border-radius: 999px;
+      background: rgba(16, 11, 20, .55); border: 1px solid var(--line);
+      backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,.6);
     }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; white-space: nowrap; }
-    .mark {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--red); display: grid; place-items: center;
-      box-shadow: 0 0 0 6px rgba(255,45,45,.15);
-    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+    .mark { width: 32px; height: 32px; border-radius: 10px; background: var(--grad); display: grid; place-items: center; box-shadow: 0 6px 20px rgba(255,95,162,.45); }
     .mark i { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; margin-left: 2px; }
-    .nav-links { display: flex; gap: 18px; align-items: center; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600; }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links { display: flex; gap: 4px; align-items: center; position: relative; }
+    .nav-links a:not(.btn) { color: var(--muted); font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; transition: color .2s, background .2s; }
+    .nav-links a:not(.btn):hover, .nav-links a.active { color: var(--ink); background: var(--glass-2); }
+    .menu-btn { display: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass); cursor: pointer; place-items: center; }
+    .menu-btn i, .menu-btn i::before { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; position: relative; transition: transform .3s var(--ease); }
+    .menu-btn i::before { content: ""; position: absolute; top: 6px; }
+    .menu-btn[aria-expanded="true"] i { transform: translateY(3px) rotate(45deg); }
+    .menu-btn[aria-expanded="true"] i::before { transform: translateY(-6px) rotate(-90deg); }
 
-    /* buttons */
+    /* ---------- buttons ---------- */
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      text-decoration: none; border-radius: 999px; padding: 12px 18px;
-      font-weight: 700; border: 0; font-family: inherit; cursor: pointer;
+      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 999px; padding: 14px 22px; font-weight: 800; border: 0; cursor: pointer; white-space: nowrap;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .3s;
+      will-change: transform; isolation: isolate; overflow: hidden;
     }
-    .nav-links .btn.sub, .btn.sub { background: var(--red); color: #fff; animation: beat 2.4s ease-in-out infinite; }
-    .btn.ghost { border: 1px solid var(--line); color: var(--ink); background: transparent; }
-    .btn.ghost:hover { border-color: var(--lime); color: var(--lime); }
-    @keyframes beat {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255,45,45,.45); }
-      50% { box-shadow: 0 0 0 10px rgba(255,45,45,0); }
+    .btn.sub { background: var(--red); color: #fff; box-shadow: 0 10px 30px -6px rgba(255,45,85,.6); }
+    .btn.sub::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; background: var(--grad);
+      transform: translateY(101%); transition: transform .45s var(--ease);
     }
+    .btn.sub:hover::before { transform: none; }
+    .btn.sub .yt { width: 18px; height: 18px; }
+    .btn.small { padding: 10px 16px; font-size: 14px; }
+    .btn.ghost { border: 1px solid var(--line-2); background: var(--glass); backdrop-filter: blur(10px); }
+    .btn.ghost:hover { border-color: var(--pink); background: rgba(255,95,162,.1); }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px) rotate(-45deg); }
 
-    /* hero */
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 36px; align-items: end; padding: 18px 0 28px; }
-    .kicker {
-      color: var(--lime); letter-spacing: .18em; text-transform: uppercase;
-      font-size: 12px; font-weight: 700; margin: 0 0 10px;
+    /* ---------- hero ---------- */
+    .hero { position: relative; min-height: 100svh; display: grid; align-items: center; padding: 120px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(10px);
+      font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 22px;
     }
+    .eyebrow b { background: var(--grad); color: #1a0c12; padding: 3px 10px; border-radius: 999px; font-size: 12px; }
     h1 {
-      font-family: "Bricolage Grotesque", sans-serif;
-      font-weight: 800; letter-spacing: -0.06em;
-      font-size: clamp(56px, 11vw, 132px);
-      line-height: .82; margin: 0;
+      font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
+      font-size: clamp(64px, 12.5vw, 176px); letter-spacing: -0.065em; line-height: .84; margin: 0;
     }
-    h1 .ghost { color: transparent; -webkit-text-stroke: 1.5px var(--ink); margin-left: .08em; }
-    h1 .lime { color: var(--lime); display: block; }
-    .lede { color: var(--muted); font-size: 18px; max-width: 480px; margin: 18px 0; }
+    h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
+    h1 .ch { display: inline-block; transform: translateY(110%); }
+    .ready h1 .ch { animation: up 1s var(--ease) both; animation-delay: calc(var(--i) * 45ms + .1s); }
+    h1 .serif { font-size: .58em; letter-spacing: -0.02em; color: var(--ink); margin-left: .12em; vertical-align: .38em; }
+    h1 .gch { background-image: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { color: var(--muted); font-size: clamp(17px, 1.6vw, 20px); max-width: 520px; margin: 26px 0 30px; }
     .lede b { color: var(--ink); font-weight: 600; }
-    .cta { display: flex; flex-wrap: wrap; gap: 10px; }
-    .stage { position: relative; display: grid; justify-items: end; min-height: 520px; }
-    .frames { position: relative; width: min(320px, 100%); aspect-ratio: 9/15; }
-    .frame {
-      position: absolute; inset: 0;
-      border-radius: 28px; overflow: hidden;
-      border: 1px solid var(--line); background: #111;
-      opacity: 0; animation: fadeShow 12s infinite;
-    }
-    .frame img { width: 100%; height: 100%; object-fit: cover; }
-    .frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6), transparent 45%); }
-    .frame:nth-of-type(2) { animation-delay: 4s; }
-    .frame:nth-of-type(3) { animation-delay: 8s; }
-    .frame span {
-      position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 2;
-      font-weight: 700; font-size: 14px; line-height: 1.3;
-    }
-    @keyframes fadeShow { 0%, 26% { opacity: 1; } 34%, 100% { opacity: 0; } }
-    .stamp {
-      position: absolute; left: -16px; top: -10px; z-index: 3;
-      width: 116px; height: 116px; border-radius: 50%;
-      display: grid; place-items: center; text-align: center;
-      background: var(--lime); color: #111; font-weight: 800; font-size: 13px;
-      transform: rotate(-12deg); animation: wobble 5s ease-in-out infinite;
-      text-decoration: none; line-height: 1.15;
-    }
-    @keyframes wobble { 50% { transform: rotate(8deg) scale(1.04); } }
-    .chip-live {
-      position: absolute; right: 14px; top: 14px; z-index: 3;
-      background: rgba(0,0,0,.72); border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 600;
-    }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .fade-up { opacity: 0; transform: translateY(24px); filter: blur(8px); }
+    .ready .fade-up { animation: fadeUp 1s var(--ease) both; animation-delay: var(--d, .5s); }
+    @keyframes fadeUp { to { opacity: 1; transform: none; filter: none; } }
+    .avatars { display: flex; align-items: center; gap: 12px; margin-top: 30px; color: var(--muted); font-size: 14px; }
+    .avatars .stack-av { display: flex; }
+    .avatars .stack-av img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg); margin-left: -10px; }
+    .avatars .stack-av img:first-child { margin-left: 0; }
+    .avatars b { color: var(--ink); }
 
-    /* stats */
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 8px 0 26px; }
-    .stat { border-top: 1px solid var(--line); padding-top: 12px; }
-    .stat b {
-      display: block; font-family: "Bricolage Grotesque", sans-serif;
-      font-size: clamp(30px, 4vw, 52px); letter-spacing: -0.05em; line-height: 1;
+    .stage { position: relative; height: min(600px, 70vh); display: grid; place-items: center; perspective: 1200px; }
+    .phones { position: relative; width: min(270px, 70%); aspect-ratio: 9/16; transform-style: preserve-3d; }
+    .phone {
+      position: absolute; inset: 0; border-radius: 34px; overflow: hidden; background: #111;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,.85), inset 0 0 0 6px rgba(0,0,0,.4);
+      transition: transform .8s var(--ease), filter .5s;
     }
-    .stat span { color: var(--muted); font-size: 13px; }
-    .note { color: var(--muted); font-size: 13px; margin: -12px 0 28px; }
+    .phone img { width: 100%; height: 100%; object-fit: cover; }
+    .phone::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75), transparent 45%); }
+    .phone .cap { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 2; font-weight: 800; font-size: 15px; line-height: 1.25; }
+    .phone .cap small { display: block; font-weight: 600; color: rgba(255,255,255,.7); font-size: 12px; margin-top: 4px; }
+    .phone.p1 { transform: translateX(-46%) rotate(-12deg) scale(.82); filter: brightness(.6); }
+    .phone.p2 { transform: translateX(46%) rotate(12deg) scale(.82); filter: brightness(.6); }
+    .phone.p3 { z-index: 2; }
+    .phones:hover .phone.p1 { transform: translateX(-58%) rotate(-15deg) scale(.86); filter: none; }
+    .phones:hover .phone.p2 { transform: translateX(58%) rotate(15deg) scale(.86); filter: none; }
+    .notch { position: absolute; top: 10px; left: 50%; width: 76px; height: 20px; margin-left: -38px; background: #000; border-radius: 999px; z-index: 3; }
+    .live {
+      position: absolute; top: 40px; left: 14px; z-index: 3; display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .04em;
+      background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(8px);
+    }
+    .live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(255,45,85,.7); animation: ping 1.6s infinite; }
+    @keyframes ping { 70% { box-shadow: 0 0 0 8px rgba(255,45,85,0); } 100% { box-shadow: 0 0 0 0 rgba(255,45,85,0); } }
+    .badge {
+      position: absolute; z-index: 5; right: -6%; top: 2%; width: 128px; height: 128px; border-radius: 50%;
+      display: grid; place-items: center; background: rgba(16,11,20,.7); border: 1px solid var(--line-2);
+      backdrop-filter: blur(12px); box-shadow: 0 20px 50px -10px rgba(255,95,162,.5);
+    }
+    .badge svg { position: absolute; inset: 0; animation: spin 14s linear infinite; }
+    .badge text { fill: var(--ink); font: 800 11.5px Figtree, sans-serif; letter-spacing: 3.2px; text-transform: uppercase; }
+    .badge .play { width: 46px; height: 46px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; transition: transform .4s var(--ease); }
+    .badge:hover .play { transform: scale(1.15); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .float-chip {
+      position: absolute; z-index: 5; padding: 10px 14px; border-radius: 18px; font-size: 13px; font-weight: 700;
+      background: rgba(16,11,20,.72); border: 1px solid var(--line-2); backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,.6); animation: bob 5s ease-in-out infinite;
+    }
+    .float-chip b { display: block; font-family: "Bricolage Grotesque"; font-size: 22px; letter-spacing: -0.03em; line-height: 1.05; }
+    .float-chip.c1 { left: -4%; bottom: 14%; }
+    .float-chip.c2 { right: 0; bottom: 4%; animation-delay: -2.5s; }
+    @keyframes bob { 50% { transform: translateY(-12px); } }
+    .scroll-hint { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: grid; justify-items: center; gap: 8px; color: var(--dim); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; }
+    .scroll-hint i { width: 22px; height: 36px; border: 1.5px solid var(--dim); border-radius: 12px; position: relative; }
+    .scroll-hint i::after { content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--ink); animation: wheel 1.8s var(--ease) infinite; }
+    @keyframes wheel { 0% { opacity: 0; transform: translateY(-4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(10px); } }
 
-    /* marquee */
-    .marquee { overflow: hidden; border-block: 1px solid var(--line); background: #0e0e0e; }
-    .track { display: flex; gap: 28px; white-space: nowrap; padding: 12px 0; width: max-content; animation: slide 40s linear infinite; }
+    /* ---------- marquee ---------- */
+    .marquees { position: relative; padding: 30px 0; overflow: hidden; }
+    .marquee { display: flex; overflow: hidden; user-select: none; }
+    .marquee.m1 { transform: rotate(-2.5deg); background: var(--grad); color: #1a0c12; margin: 0 -2vw; }
+    .marquee.m2 { transform: rotate(1.8deg); background: rgba(16,11,20,.9); border-block: 1px solid var(--line); margin: -8px -2vw 0; backdrop-filter: blur(10px); }
+    .track { display: flex; flex-shrink: 0; gap: 34px; padding: 16px 17px; animation: slide 38s linear infinite; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(20px, 2.6vw, 32px); letter-spacing: -0.03em; white-space: nowrap; }
+    .m2 .track { animation-direction: reverse; animation-duration: 46s; }
+    .m2 .track span:nth-child(odd) { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; letter-spacing: 0; }
+    .track i { font-style: normal; margin-left: 34px; }
+    .m2 .track i { color: var(--pink); }
     .marquee:hover .track { animation-play-state: paused; }
-    @keyframes slide { to { transform: translateX(-50%); } }
-    .track span { font-weight: 650; }
-    .track i { color: var(--lime); font-style: normal; margin-left: 28px; }
+    @keyframes slide { to { transform: translateX(-100%); } }
 
-    /* sections */
-    section { padding: 42px 0; scroll-margin-top: 70px; }
-    h2 {
-      font-family: "Bricolage Grotesque", sans-serif;
-      font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.05em;
-      line-height: .95; margin: 0 0 8px;
-    }
-    .sub { color: var(--muted); margin: 0 0 18px; }
-    .card-link { text-decoration: none; color: inherit; }
+    /* ---------- sections ---------- */
+    section { position: relative; padding: clamp(64px, 9vw, 120px) 0; scroll-margin-top: 80px; }
+    .head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; flex-wrap: wrap; }
+    .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .tag::before { content: ""; width: 22px; height: 2px; background: var(--grad); border-radius: 2px; }
+    h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(40px, 6.4vw, 88px); letter-spacing: -0.055em; line-height: .92; margin: 0; }
+    h2 .serif { font-weight: 400; letter-spacing: -0.02em; }
+    .head p { color: var(--muted); max-width: 360px; margin: 0; }
+    .split .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
+    .split .w > span { display: inline-block; transform: translateY(105%); transition: transform 1s var(--ease); transition-delay: calc(var(--i) * 60ms); }
+    .split.in .w > span { transform: none; }
+    .reveal { opacity: 0; transform: translateY(40px); filter: blur(6px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); transition-delay: var(--d, 0s); }
+    .reveal.in { opacity: 1; transform: none; filter: none; }
 
-    /* shorts reel */
-    .reel {
-      display: grid; grid-auto-flow: column; grid-auto-columns: 180px;
-      gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
+    /* ---------- bento stats ---------- */
+    .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(170px, auto); gap: 14px; }
+    .tile {
+      position: relative; border-radius: var(--r); padding: 24px; overflow: hidden;
+      background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(14px);
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-    .short {
-      scroll-snap-align: start; background: var(--card);
-      border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
-      transition: border-color .2s ease, transform .2s ease;
+    .tile::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
+      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(255,95,162,.16), transparent 45%);
     }
-    .short:hover, .long:hover, .series a:hover, .collab:hover { border-color: var(--lime); transform: translateY(-3px); }
-    .thumb { position: relative; background: #222; overflow: hidden; }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .short .thumb { aspect-ratio: 9/15; }
-    .thumb em {
-      position: absolute; left: 8px; top: 8px; font-style: normal;
-      background: var(--lime); color: #111; font-size: 11px; font-weight: 800;
-      border-radius: 999px; padding: 3px 7px;
-    }
-    .meta { padding: 10px 10px 12px; }
-    .meta strong { display: block; font-size: 14px; line-height: 1.3; }
-    .meta small { color: var(--muted); }
+    .tile:hover::before { opacity: 1; }
+    .tile .k { font-size: 13px; font-weight: 700; color: var(--muted); }
+    .tile .n { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(48px, 6vw, 92px); letter-spacing: -0.06em; line-height: .9; }
+    .tile.big { grid-column: span 2; grid-row: span 2; background: linear-gradient(150deg, rgba(255,111,97,.2), rgba(180,92,255,.14) 70%), var(--glass); }
+    .tile.big .n { font-size: clamp(80px, 11vw, 170px); }
+    .tile.wide { grid-column: span 2; }
+    .tile .ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--glass-2); border: 1px solid var(--line); font-size: 20px; }
+    .tile.yt-tile { background: var(--red); border-color: transparent; color: #fff; cursor: pointer; transition: transform .4s var(--ease); }
+    .tile.yt-tile:hover { transform: translateY(-4px) rotate(-1deg); }
+    .tile.yt-tile .k { color: rgba(255,255,255,.85); }
+    .tile.yt-tile .go { font-family: "Bricolage Grotesque"; font-size: 30px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; display: flex; justify-content: space-between; align-items: end; }
+    .bar-row { display: flex; gap: 6px; align-items: end; height: 56px; }
+    .bar-row i { flex: 1; height: 100%; border-radius: 6px 6px 2px 2px; background: var(--grad); transform-origin: bottom; transform: scaleY(0); transition: transform 1.2s var(--ease); }
+    .in .bar-row i { transform: scaleY(var(--h)); }
+    .note { color: var(--dim); font-size: 13px; margin: 14px 0 0; }
+
+    /* ---------- video cards ---------- */
+    .card { position: relative; display: block; border-radius: var(--r); overflow: hidden; background: var(--glass); border: 1px solid var(--line); transform-style: preserve-3d; transition: border-color .3s, box-shadow .5s var(--ease); }
+    .card:hover { border-color: rgba(255,95,162,.5); box-shadow: 0 30px 60px -25px rgba(255,95,162,.45); }
+    .thumb { position: relative; overflow: hidden; background: #1a141f; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+    .card:hover .thumb img { transform: scale(1.07); }
+    .glare { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(500px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.18), transparent 40%); }
+    .card:hover .glare { opacity: 1; }
+    .pill { position: absolute; z-index: 2; left: 12px; top: 12px; font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 999px; background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(8px); letter-spacing: .02em; }
+    .pill.hot { background: var(--grad); color: #1a0c12; border: 0; }
+    .meta { padding: 16px 18px 18px; }
+    .meta strong { display: block; font-size: 15px; line-height: 1.3; font-weight: 700; }
+    .meta small { color: var(--muted); font-size: 13px; }
 
     /* most watched */
-    .hits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .hits .short .thumb { aspect-ratio: 9/12; }
-    .hits .views { font-family: "Bricolage Grotesque", sans-serif; font-size: 30px; letter-spacing: -0.04em; display: block; color: var(--lime); line-height: 1; margin-bottom: 4px; }
+    .hits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .hit .thumb { aspect-ratio: 4/5; }
+    .hit .rank { position: absolute; z-index: 2; right: 14px; top: 8px; font-family: "Instrument Serif"; font-style: italic; font-size: 84px; line-height: 1; color: rgba(255,255,255,.92); text-shadow: 0 6px 30px rgba(0,0,0,.6); }
+    .hit .over { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 70px 18px 18px; background: linear-gradient(to top, rgba(8,6,11,.95), transparent); }
+    .hit .views { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(40px, 4.4vw, 60px); letter-spacing: -0.05em; line-height: .95; }
+    .hit .views small { font-family: Figtree; font-size: 14px; letter-spacing: 0; color: var(--muted); font-weight: 600; margin-left: 4px; }
+    .hit strong { display: block; margin-top: 6px; font-weight: 700; }
+    .hit:nth-child(2) { transform: translateY(40px); }
 
     /* long videos */
-    .wall { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
-    .feature { display: block; position: relative; border-radius: 24px; overflow: hidden; min-height: 380px; border: 1px solid var(--line); }
+    .wall { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
+    .feature { min-height: 520px; }
     .feature .thumb { position: absolute; inset: 0; }
-    .feature .shade {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 50%, transparent 72%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;
-    }
-    .feature h3 { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.04em; line-height: 1; margin: 0 0 6px; text-shadow: 0 2px 18px #000; }
-    .feature p { margin: 0; color: #e8e2d6; }
+    .feature .shade { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 3vw, 34px); background: linear-gradient(to top, rgba(8,6,11,.96), rgba(8,6,11,.35) 55%, transparent 75%); }
+    .feature h3 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: clamp(30px, 3.8vw, 52px); letter-spacing: -0.05em; line-height: .95; margin: 10px 0; }
+    .feature p { margin: 0; color: #e4dbe2; max-width: 460px; }
+    .feature .tagline { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+    .play-big { position: absolute; z-index: 3; top: 24px; right: 24px; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); backdrop-filter: blur(10px); display: grid; place-items: center; transition: transform .5s var(--ease), background .3s; }
+    .feature:hover .play-big { transform: scale(1.12) rotate(90deg); background: var(--red); }
     .stack { display: grid; gap: 12px; }
-    .long {
-      display: grid; grid-template-columns: 168px 1fr; gap: 12px; align-items: center;
-      background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
-      transition: border-color .2s ease, transform .2s ease;
+    .long { display: grid; grid-template-columns: 170px 1fr; align-items: center; }
+    .long .thumb { height: 100%; min-height: 104px; }
+    .long .meta { padding: 14px 18px; }
+    .long .dur { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--amber); }
+
+    /* shorts reel */
+    .reel-wrap { position: relative; }
+    .reel {
+      display: grid; grid-auto-flow: column; grid-auto-columns: clamp(190px, 20vw, 240px); gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 20px; scrollbar-width: none; cursor: grab;
     }
-    .long .thumb { aspect-ratio: 16/9; height: 100%; }
+    .reel::-webkit-scrollbar { display: none; }
+    .reel.drag { cursor: grabbing; scroll-snap-type: none; }
+    .reel.drag a { pointer-events: none; }
+    .reel .card { scroll-snap-align: start; }
+    .reel .thumb { aspect-ratio: 9/15; }
+    .reel .meta { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 60px 14px 14px; background: linear-gradient(to top, rgba(8,6,11,.95), transparent); }
+    .arrows { display: flex; gap: 8px; }
+    .arrows button { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--glass); cursor: pointer; display: grid; place-items: center; transition: background .3s, transform .3s var(--ease); }
+    .arrows button:hover { background: var(--ink); color: var(--bg); transform: scale(1.06); }
+    .reel-progress { height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+    .reel-progress i { display: block; height: 100%; width: 20%; background: var(--grad); border-radius: 2px; transition: transform .2s; transform-origin: 0 50%; }
 
     /* series */
-    .series { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .series a {
-      text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
-      transition: border-color .2s ease, transform .2s ease;
-    }
-    .series .thumb { aspect-ratio: 16/10; }
-    .series .count { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.78); border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
+    .series { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .series .thumb { aspect-ratio: 16/11; }
+    .series .vcount { position: absolute; z-index: 2; right: 12px; bottom: 12px; display: inline-flex; gap: 6px; align-items: center; padding: 5px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(8px); }
+    .series .card.all { background: var(--grad); color: #1a0c12; border: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 22px; min-height: 100%; }
+    .series .card.all b { font-family: "Bricolage Grotesque"; font-size: 34px; letter-spacing: -0.05em; line-height: .95; }
+    .series .card.all .circ { width: 56px; height: 56px; border-radius: 50%; background: #1a0c12; color: #fff; display: grid; place-items: center; font-size: 22px; transition: transform .5s var(--ease); align-self: flex-end; }
+    .series .card.all:hover .circ { transform: rotate(-45deg) scale(1.1); }
 
     /* collabs */
-    .collabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .collab {
-      text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
-      transition: border-color .2s ease, transform .2s ease;
+    .collabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .collabs .thumb { aspect-ratio: 16/11; }
+    .plat { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--pink); }
+    .brands { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+    .brands span { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass); font-weight: 800; letter-spacing: -0.01em; color: var(--muted); transition: color .3s, border-color .3s; }
+    .brands span:hover { color: var(--ink); border-color: var(--pink); }
+
+    .work {
+      position: relative; margin-top: 18px; border-radius: 36px; padding: clamp(26px, 4vw, 52px); overflow: hidden;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center;
+      background: var(--bg-2); isolation: isolate;
     }
-    .collab .thumb { aspect-ratio: 16/10; }
-    .plat { display: inline-flex; gap: 6px; margin-top: 6px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--lime); }
-    .collab-cta {
-      margin-top: 18px; border-radius: 28px; border: 1px solid var(--line); padding: 28px;
-      display: flex; justify-content: space-between; gap: 18px; align-items: center;
-      background: radial-gradient(420px 180px at 100% 0%, rgba(214,255,74,.18), transparent 62%), #121212;
+    .work::before {
+      content: ""; position: absolute; inset: -1px; border-radius: inherit; z-index: -2; padding: 1px;
+      background: conic-gradient(from var(--ang), #ffb547, #ff5fa2, #b45cff, #ff6f61, #ffb547);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: rot 6s linear infinite;
     }
-    .collab-cta h2 { margin-bottom: 8px; }
-    .collab-cta ul { margin: 0 0 4px; padding-left: 18px; color: var(--muted); }
-    .mails { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
-    .mails .btn { justify-content: flex-start; }
+    .work::after { content: ""; position: absolute; z-index: -1; width: 520px; height: 520px; right: -160px; top: -220px; background: radial-gradient(circle, rgba(255,95,162,.3), transparent 65%); }
+    @keyframes rot { to { --ang: 360deg; } }
+    .work h2 { font-size: clamp(38px, 5vw, 68px); }
+    .facts { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+    .facts li { display: flex; gap: 12px; align-items: center; color: var(--muted); }
+    .facts li::before { content: "✦"; color: var(--pink); }
+    .mails { display: grid; gap: 12px; }
+    .mail {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 16px 20px;
+      border-radius: 20px; border: 1px solid var(--line-2); background: var(--glass); transition: border-color .3s, background .3s;
+    }
+    .mail:hover { border-color: var(--pink); background: rgba(255,95,162,.08); }
+    .mail span { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mail small { display: block; color: var(--muted); font-weight: 600; font-size: 12px; }
+    .copy { flex-shrink: 0; border: 1px solid var(--line-2); background: transparent; border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 800; cursor: pointer; transition: background .3s, color .3s; }
+    .copy:hover { background: var(--ink); color: var(--bg); }
 
     /* instagram */
-    .ig { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .ig { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .ig a {
-      text-decoration: none; border: 1px solid var(--line); border-radius: 22px;
-      padding: 22px; min-height: 190px; display: flex; flex-direction: column; gap: 8px;
-      background: linear-gradient(180deg, #171717, #101010);
-      transition: border-color .2s ease, transform .2s ease;
+      position: relative; border-radius: var(--r); padding: 24px; min-height: 240px; display: flex; flex-direction: column; gap: 6px;
+      background: var(--glass); border: 1px solid var(--line); overflow: hidden; transition: transform .5s var(--ease), border-color .3s;
     }
-    .ig a:hover { border-color: var(--lime); transform: translateY(-4px); }
-    .ig a.main { border-color: rgba(214,255,74,.45); }
-    .ig-mark {
-      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
-      color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .04em;
-      background: radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b 52%, #6228d7);
-    }
-    .ig h3 { margin: 8px 0 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 26px; letter-spacing: -0.04em; }
+    .ig a::after { content: ""; position: absolute; inset: auto -40% -60% auto; width: 80%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(238,42,123,.35), transparent 65%); transition: transform .7s var(--ease); }
+    .ig a:hover { transform: translateY(-6px); border-color: rgba(238,42,123,.6); }
+    .ig a:hover::after { transform: scale(1.6); }
+    .ig a.main { background: linear-gradient(160deg, rgba(249,206,52,.18), rgba(238,42,123,.2) 50%, rgba(98,40,215,.22)); border-color: rgba(238,42,123,.45); }
+    .ig-mark { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: radial-gradient(circle at 30% 110%, #f9ce34, #ee2a7b 55%, #6228d7); box-shadow: 0 10px 30px -6px rgba(238,42,123,.6); }
+    .ig h3 { margin: 18px 0 0; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 28px; letter-spacing: -0.04em; line-height: 1; }
     .ig p { margin: 0; color: var(--muted); }
-    .ig small { color: var(--lime); font-weight: 700; margin-top: auto; }
+    .ig small { margin-top: auto; position: relative; z-index: 1; font-weight: 800; display: inline-flex; gap: 6px; align-items: center; }
 
     /* about */
-    .about { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .about article {
-      border: 1px solid var(--line); border-radius: 22px; padding: 20px; min-height: 180px;
-      background: linear-gradient(180deg, #171717, #101010);
-    }
-    .about h3 { margin: 8px 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 24px; letter-spacing: -0.04em; }
+    .about { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .about article { position: relative; border-radius: var(--r); padding: 28px; min-height: 300px; background: var(--glass); border: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
+    .about .num { font-family: "Instrument Serif"; font-style: italic; font-size: 96px; line-height: .8; }
+    .about .emo { position: absolute; right: 22px; top: 22px; font-size: 34px; transition: transform .6s var(--ease); }
+    .about article:hover .emo { transform: rotate(-14deg) scale(1.25); }
+    .about h3 { margin: auto 0 10px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 30px; letter-spacing: -0.04em; line-height: 1; }
     .about p { margin: 0; color: var(--muted); }
 
-    /* finale + footer */
-    .finale {
-      margin: 10px 0 30px; border-radius: 32px; padding: 36px;
-      background: radial-gradient(500px 200px at 90% 0%, rgba(214,255,74,.2), transparent 60%), #ff2d2d;
-      color: #fff; display: flex; justify-content: space-between; gap: 20px; align-items: center;
-    }
-    .finale h2 { margin: 0 0 8px; }
-    .finale p { margin: 0; max-width: 480px; }
-    .finale .btn { background: #fff; color: #111; }
-    footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; padding: 10px 0 60px; }
-    footer a { color: var(--lime); }
+    /* finale */
+    .finale { text-align: center; padding: clamp(80px, 12vw, 160px) 0; }
+    .finale h2 { font-size: clamp(56px, 11vw, 168px); line-height: .86; }
+    .finale p { color: var(--muted); max-width: 540px; margin: 26px auto 34px; font-size: 18px; }
+    .finale .btn { padding: 20px 32px; font-size: 18px; }
+    .orb { position: absolute; left: 50%; top: 50%; width: min(700px, 90vw); aspect-ratio: 1; transform: translate(-50%, -50%); z-index: -1; border-radius: 50%; background: conic-gradient(from var(--ang), #ffb547, #ff5fa2, #b45cff, #ff6f61, #ffb547); filter: blur(110px); opacity: .32; animation: rot 12s linear infinite; }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.in { opacity: 1; transform: none; }
+    footer { border-top: 1px solid var(--line); padding: 34px 0 40px; overflow: hidden; }
+    .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .foot a { color: var(--ink); font-weight: 600; }
+    .foot a:hover { color: var(--pink); }
+    .giant { font-family: "Bricolage Grotesque"; font-weight: 800; letter-spacing: -0.07em; line-height: .8; font-size: clamp(36px, 12.4vw, 186px); text-align: center; margin: 10px 0 30px; color: transparent; -webkit-text-stroke: 1px var(--line-2); white-space: nowrap; user-select: none; transition: color .6s; }
+    .giant:hover { color: rgba(255,95,162,.12); }
 
-
-    /* ===== visual upgrade ===== */
-    body {
-      background:
-        radial-gradient(900px 600px at 85% -10%, rgba(255,111,165,.18), transparent 60%),
-        radial-gradient(800px 500px at -10% 10%, rgba(255,181,71,.12), transparent 60%),
-        var(--bg);
-      background-attachment: fixed;
-    }
-    .mark { background: var(--sunset); box-shadow: 0 0 0 6px rgba(255,111,97,.18); }
-    .progress { background: var(--sunset); }
-    .kicker { color: var(--lime); }
-    h1 .ghost { -webkit-text-stroke: 0; color: var(--ink); font-family: Caveat, cursive; font-weight: 700; letter-spacing: 0; font-size: .62em; margin: 0 0 0 .12em; position: relative; top: -.08em; }
-    h1 .lime { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 30px rgba(255,111,97,.35)); }
-    h2 { background: linear-gradient(180deg, #fff, #e9d9cf); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .finale h2, .collab-cta h2 { color: inherit; }
-    .finale h2 { background: none; -webkit-background-clip: initial; background-clip: initial; color: #fff; }
-    .btn.sub, .nav-links .btn.sub { background: var(--red); box-shadow: 0 8px 24px rgba(255,45,85,.35); }
-    .btn.ghost { background: rgba(255,255,255,.04); backdrop-filter: blur(6px); }
-    .btn.ghost:hover { border-color: var(--pink); color: #fff; background: rgba(255,111,165,.12); }
-    /* hero: fanned phone cards */
-    .frames { perspective: 1000px; }
-    .frame { opacity: 1 !important; animation: none; border-radius: 26px; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 30px 60px -20px rgba(0,0,0,.8), 0 0 0 6px rgba(255,255,255,.03); transition: transform .5s cubic-bezier(.2,.8,.2,1), z-index 0s; }
-    .stage { justify-items: center; }
-    .frames { width: min(280px, 100%); }
-    .frame.fa { transform: rotate(-9deg) translate(-30%, 6%) scale(.86); z-index: 1; filter: brightness(.75); }
-    .frame.fb { transform: rotate(8deg) translate(30%, 4%) scale(.86); z-index: 1; filter: brightness(.75); }
-    .frame.fc { transform: none; z-index: 2; }
-    .frame.fa span, .frame.fb span { display: none; }
-    .frames:hover .frame.fa { transform: rotate(-12deg) translate(-38%, 4%) scale(.88); filter: none; }
-    .frames:hover .frame.fb { transform: rotate(11deg) translate(38%, 2%) scale(.88); filter: none; }
-    .stamp { background: var(--sunset); color: #1a0c12; box-shadow: 0 12px 30px rgba(255,111,97,.45); z-index: 4; }
-    .chip-live { z-index: 4; background: rgba(13,10,16,.75); border: 1px solid rgba(255,255,255,.15); backdrop-filter: blur(6px); }
-    .chip-live::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #ff2d55; margin-right: 6px; vertical-align: 1px; animation: pulse 1.6s infinite; }
-    @keyframes pulse { 50% { opacity: .3; } }
-    /* stats as glass tiles */
-    .stats { gap: 14px; }
-    .stat { border: 1px solid var(--line); border-radius: 20px; padding: 18px 18px 14px; background: var(--card); backdrop-filter: blur(8px); }
-    .stat b { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .marquee { background: linear-gradient(90deg, rgba(255,181,71,.08), rgba(255,111,165,.08)); }
-    .track i { color: var(--pink); }
-    /* cards */
-    .short, .long, .series a, .collab, .ig a, .about article, .collab-cta { background: var(--card); backdrop-filter: blur(8px); border-color: var(--line); }
-    .short:hover, .long:hover, .series a:hover, .collab:hover, .ig a:hover { border-color: rgba(255,111,165,.6); box-shadow: 0 18px 40px -18px rgba(255,111,165,.45); }
-    .thumb img { transition: transform .6s ease; }
-    a:hover .thumb img { transform: scale(1.06); }
-    .thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: rgba(255,45,85,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='white'/%3E%3C/svg%3E") center/22px no-repeat; opacity: 0; transform: scale(.7); transition: .25s ease; box-shadow: 0 8px 24px rgba(255,45,85,.5); }
-    a:hover .thumb::after { opacity: 1; transform: scale(1); }
-    .thumb em { background: var(--sunset); color: #1a0c12; }
-    .hits .views { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 34px; }
-    .feature { box-shadow: 0 30px 70px -30px rgba(255,111,97,.45); }
-    .feature .shade { background: linear-gradient(to top, rgba(13,10,16,.95) 0%, rgba(13,10,16,.4) 50%, transparent 72%); }
-    .series .count { background: rgba(13,10,16,.8); border: 1px solid rgba(255,255,255,.15); }
-    .plat { color: var(--pink); }
-    .about .kicker { font-family: Caveat, cursive; font-size: 34px; letter-spacing: 0; text-transform: none; background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0; }
-    .ig a.main { border-color: rgba(255,111,165,.55); background: linear-gradient(160deg, rgba(255,111,165,.16), rgba(255,181,71,.08)); }
-    .ig small { color: var(--pink); }
-    .collab-cta { background: radial-gradient(420px 200px at 100% 0%, rgba(255,111,165,.22), transparent 62%), radial-gradient(380px 200px at 0% 100%, rgba(255,181,71,.14), transparent 60%), var(--card); }
-    .finale { background: radial-gradient(500px 220px at 90% 0%, rgba(255,181,71,.45), transparent 60%), linear-gradient(120deg, #ff2d55, #ff6f61 60%, #ff6fa5); box-shadow: 0 30px 70px -30px rgba(255,45,85,.6); }
-    .finale .btn { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
-    footer a { color: var(--pink); }
-    a:focus-visible, button:focus-visible { outline-color: var(--pink); }
-    /* mobile sticky subscribe */
+    .toast { position: fixed; left: 50%; bottom: 28px; z-index: 120; transform: translate(-50%, 200%); opacity: 0; visibility: hidden; padding: 12px 20px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 800; transition: transform .5s var(--ease); }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+    .toast { transition: transform .5s var(--ease), opacity .3s, visibility .5s; }
     .m-sub { display: none; }
-    @media (max-width: 760px) {
-      .frame.fa { transform: rotate(-8deg) translate(-22%, 6%) scale(.8); }
-      .frame.fb { transform: rotate(8deg) translate(22%, 4%) scale(.8); }
-      .frames { margin: 10px auto 0; width: min(230px, 62vw); }
-      .m-sub { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; justify-content: center; border-radius: 999px; padding: 14px; background: var(--red); color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 12px 30px rgba(255,45,85,.5); }
-      footer { padding-bottom: 96px; }
-    }
 
-    @media (max-width: 960px) {
+    /* ---------- responsive ---------- */
+    @media (max-width: 1000px) {
       .series, .collabs, .ig { grid-template-columns: repeat(2, 1fr); }
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .tile.big { grid-column: span 2; grid-row: span 1; }
+      .about { grid-template-columns: 1fr; }
+      .about article { min-height: 220px; }
     }
-    @media (max-width: 760px) {
-      .hero, .wall, .about, .hits { grid-template-columns: 1fr; }
-      .finale, .collab-cta { display: grid; }
-      .nav-links a:not(.btn) { display: none; }
-      .stage { min-height: 0; justify-items: center; }
-      .frames { width: min(280px, 80vw); }
-      .stamp { left: -8px; width: 96px; height: 96px; font-size: 12px; }
-      .long { grid-template-columns: 128px 1fr; }
-      .feature { min-height: 300px; }
-      .hits { grid-auto-flow: column; grid-auto-columns: 70%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; }
-      .hits .short { scroll-snap-align: start; }
-      .finale { padding: 26px; }
+    @media (max-width: 820px) {
+      .nav-links { position: absolute; top: calc(100% + 10px); left: 0; right: 0; flex-direction: column; align-items: stretch; padding: 10px; border-radius: 26px; background: rgba(16,11,20,.92); border: 1px solid var(--line); backdrop-filter: blur(18px); opacity: 0; transform: translateY(-10px) scale(.98); pointer-events: none; transition: opacity .3s, transform .4s var(--ease); }
+      .nav-links.open { opacity: 1; transform: none; pointer-events: auto; }
+      .nav-links a:not(.btn) { font-size: 18px; padding: 14px 16px; }
+      .nav { position: relative; }
+      .menu-btn { display: grid; }
+      .nav-sub { display: none; }
+      .hero { padding-top: 110px; min-height: auto; }
+      .hero-grid, .wall, .work { grid-template-columns: 1fr; }
+      .stage { height: 440px; }
+      .badge { width: 100px; height: 100px; right: 2%; }
+      .phone.p1 { transform: translateX(-30%) rotate(-9deg) scale(.8); }
+      .phone.p2 { transform: translateX(30%) rotate(9deg) scale(.8); }
+      .badge text { font-size: 9.5px; letter-spacing: 2.4px; }
+      .float-chip.c1 { left: 0; }
+      .scroll-hint { display: none; }
+      .hits { grid-auto-flow: column; grid-auto-columns: 78%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; }
+      .hits::-webkit-scrollbar { display: none; }
+      .hit { scroll-snap-align: start; }
+      .hit:nth-child(2) { transform: none; }
+      .feature { min-height: 400px; }
+      .long { grid-template-columns: 130px 1fr; }
+      .arrows { display: none; }
+      .m-sub { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; justify-content: center; align-items: center; gap: 8px; border-radius: 999px; padding: 15px; background: var(--red); color: #fff; font-weight: 800; box-shadow: 0 14px 34px -6px rgba(255,45,85,.6); transform: translateY(150%); transition: transform .5s var(--ease); }
+      .m-sub.show { transform: none; }
+      footer { padding-bottom: 100px; }
     }
-    @media (max-width: 420px) {
+    @media (max-width: 480px) {
       .series, .collabs, .ig { grid-template-columns: 1fr; }
-      .stats b { font-size: 28px; }
+      .bento { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .tile { padding: 18px; }
+      .tile.wide { grid-column: span 2; }
+      .tile .n { font-size: 44px; }
+      .long { grid-template-columns: 112px 1fr; }
+      .long .meta { padding: 10px 12px; }
+      .long .meta strong { font-size: 14px; }
+      .mail span { font-size: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .frame:first-of-type { opacity: 1; }
-      .reveal { opacity: 1; transform: none; }
+      h1 .ch, .split .w > span { transform: none !important; }
+      .fade-up, .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .bar-row i { transform: scaleY(var(--h)) !important; }
+      .loader { display: none; }
     }
   </style>
 </head>
-<body>
+<body class="loading">
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-word"><span>vibe</span> <span class="serif">with</span> <span class="grad-text">aaruu</span></div>
+      <div class="loader-bar"><i id="loaderBar"></i></div>
+      <div class="loader-num" id="loaderNum">000</div>
+    </div>
+  </div>
+
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="ring" aria-hidden="true"><span id="ringLabel">Play</span></div>
   <div class="progress" id="progress"></div>
-  <div class="wrap">
-    <header class="nav">
-      <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i></span> Vibe With Aaruu</a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="#latest">Videos</a>
-        <a href="#series">Series</a>
-        <a href="#collab">Collabs</a>
-        <a href="#instagram">Instagram</a>
-        <a href="#about">About</a>
-        <a class="btn sub" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">Subscribe</a>
-      </nav>
-    </header>
 
-    <main id="top" class="hero">
-      <div>
-        <p class="kicker">India · Couple · Travel · Stories</p>
-        <h1>
-          <span>VIBE</span>
-          <span class="ghost">WITH</span>
-          <span class="lime">AARUU</span>
-        </h1>
-        <p class="lede">Hi, I’m Aarushi, and this is our channel with Harshit. <b>Couple travel, our Mahindra XUV 7XO diaries, festivals</b> and the everyday moments that never make the script.</p>
-        <div class="cta">
-          <a class="btn sub" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">Subscribe · it’s free</a>
-          <a class="btn ghost" href="https://www.youtube.com/playlist?list=PLNG0zUlA3Mzs">Watch the Himachal trip</a>
+  <div class="nav-shell" id="navShell">
+    <div class="wrap">
+      <header class="nav">
+        <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i></span> Vibe With Aaruu</a>
+        <nav class="nav-links" id="navLinks" aria-label="Main">
+          <a href="#hits">Videos</a>
+          <a href="#series">Series</a>
+          <a href="#collab">Collabs</a>
+          <a href="#instagram">Instagram</a>
+          <a href="#about">About</a>
+        </nav>
+        <div style="display:flex;gap:8px;align-items:center">
+          <a class="btn sub small nav-sub magnetic" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">Subscribe</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i></i></button>
         </div>
-      </div>
-      <div class="stage">
-        <div class="frames">
-          <a class="stamp" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">SUBSCRIBE<br />NOW</a>
-          <span class="chip-live">New · Himachal trip</span>
-          <a class="frame fa" href="https://www.youtube.com/shorts/kun62Sz8o5o"><img src="https://i.ytimg.com/vi/kun62Sz8o5o/oar2.jpg" alt="9-to-5 vs mountain views" /><span>9-to-5 vs pahadon ke nazare</span></a>
-          <a class="frame fb" href="https://www.youtube.com/shorts/krchCujadJk"><img src="https://i.ytimg.com/vi/krchCujadJk/oar2.jpg" alt="Do you trust me" /><span>Do you trust me? 😂</span></a>
-          <a class="frame fc" href="https://www.youtube.com/shorts/52quDx40ugs"><img src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="Salary aate hi pahadon mein" /><span>Salary aate hi pahadon mein 🏔️</span></a>
-        </div>
-      </div>
-    </main>
-
-    <div class="stats" aria-label="YouTube totals">
-      <div class="stat"><b class="count" data-to="67" data-suffix="K+">67K+</b><span>subscribers</span></div>
-      <div class="stat"><b class="count" data-to="6" data-suffix=" Cr+">6 Cr+</b><span>views</span></div>
-      <div class="stat"><b class="count" data-to="240" data-suffix="+">240+</b><span>videos</span></div>
-    </div>
-    <p class="note">YouTube totals as of November 2026 · @VibeWithAaruu · India</p>
-  </div>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="track" id="track">
-      <span>Himachal trip<i>✦</i></span>
-      <span>XUV 7XO diaries<i>✦</i></span>
-      <span>Bali, Indonesia<i>✦</i></span>
-      <span>iPhone 17 surprise<i>✦</i></span>
-      <span>Holkar Stadium, IND vs WI<i>✦</i></span>
-      <span>Garba nights &amp; Ravan Dahan<i>✦</i></span>
-      <span>Hyderabad road trips<i>✦</i></span>
-      <span>Janapav family trip<i>✦</i></span>
+      </header>
     </div>
   </div>
 
-  <div class="wrap">
-    <section id="hits" class="reveal">
-      <h2>Most watched.</h2>
-      <p class="sub">The three shorts that brought most of you here.</p>
-      <div class="hits">
-        <a class="short card-link" href="https://www.youtube.com/shorts/AUoMR9zm7pA">
-          <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/AUoMR9zm7pA/oar2.jpg" alt="A mother's sacrifice" /></div>
-          <div class="meta"><span class="views">3.77 Cr</span><strong>A mother’s sacrifice that will leave you speechless</strong><small>views</small></div>
-        </a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/B5wpAdjEcB4">
-          <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/B5wpAdjEcB4/oar2.jpg" alt="Our first international flight" /></div>
-          <div class="meta"><span class="views">1.33 Cr</span><strong>Our first international flight</strong><small>views</small></div>
-        </a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/7l2O_Bl3BAs">
-          <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/7l2O_Bl3BAs/oar2.jpg" alt="Bali's sacred cleansing ritual" /></div>
-          <div class="meta"><span class="views">54 L</span><strong>We did Bali’s sacred cleansing ritual</strong><small>views</small></div>
-        </a>
-      </div>
-    </section>
-
-    <section id="latest" class="reveal">
-      <h2>Longer watches.</h2>
-      <p class="sub">Full vlogs: our new car, Bali, match day and family trips.</p>
-      <div class="wall">
-        <a class="feature card-link" href="https://www.youtube.com/watch?v=CEy6gMPDEC0">
-          <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/CEy6gMPDEC0/maxresdefault.jpg" alt="Mahindra XUV 7XO first service" /></div>
-          <div class="shade">
-            <p class="kicker">XUV 7XO diaries · full video</p>
-            <h3>First service: ₹4,200 repair for free?</h3>
-            <p>Cost, mileage and our honest service-centre experience in Indore.</p>
-          </div>
-        </a>
-        <div class="stack">
-          <a class="long card-link" href="https://www.youtube.com/watch?v=L0aOG0K_DVk">
-            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/L0aOG0K_DVk/maxresdefault.jpg" alt="" /></div>
-            <div class="meta"><strong>XUV 7XO delivery: parents’ reaction 🥹</strong><small>14 min · family surprise</small></div>
-          </a>
-          <a class="long card-link" href="https://www.youtube.com/watch?v=rkqyRF57fB4">
-            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/rkqyRF57fB4/maxresdefault.jpg" alt="" /></div>
-            <div class="meta"><strong>3 places in Bali beyond the beaches</strong><small>6 min · North Bali</small></div>
-          </a>
-          <a class="long card-link" href="https://www.youtube.com/watch?v=f0KftHTgdsQ">
-            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/f0KftHTgdsQ/maxresdefault.jpg" alt="" /></div>
-            <div class="meta"><strong>IND vs WI at Holkar Stadium</strong><small>Full match-day vlog · Indore</small></div>
-          </a>
-          <a class="long card-link" href="https://www.youtube.com/watch?v=c6rJJGntyNI">
-            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/c6rJJGntyNI/maxresdefault.jpg" alt="" /></div>
-            <div class="meta"><strong>Janapav family road trip 🐒</strong><small>Bhagwan Parshuram janmasthali</small></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="shorts" class="reveal">
-      <h2>New shorts.</h2>
-      <p class="sub">Fresh from the channel. Swipe, then tap to watch.</p>
-      <div class="reel">
-        <a class="short card-link" href="https://www.youtube.com/shorts/krchCujadJk"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/krchCujadJk/oar2.jpg" alt="" /><em>Himachal</em></div><div class="meta"><strong>Do you trust me? 😂</strong><small>Couple moments</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/kun62Sz8o5o"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/kun62Sz8o5o/oar2.jpg" alt="" /><em>Himachal</em></div><div class="meta"><strong>Quit your 9-to-5, come to the mountains</strong><small>Narkanda views</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/52quDx40ugs"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="" /><em>Himachal</em></div><div class="meta"><strong>Salary aate hi pahadon mein</strong><small>Mountain mornings</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/1IV5VMACwg8"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/1IV5VMACwg8/oar2.jpg" alt="" /><em>XUV 7XO</em></div><div class="meta"><strong>Galaxy Grey looks stunning</strong><small>Cinematic car short</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/Ap_QSd28soA"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/Ap_QSd28soA/oar2.jpg" alt="" /><em>Couple</em></div><div class="meta"><strong>My favourite co-passenger ❤️</strong><small>Little drives, big memories</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/r9ecvZ1LzsM"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/r9ecvZ1LzsM/oar2.jpg" alt="" /><em>Surprise</em></div><div class="meta"><strong>Husband ne diya iPhone surprise 🥺</strong><small>Wait for her reaction</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/TLynPbG0J0k"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/TLynPbG0J0k/oar2.jpg" alt="" /><em>Story</em></div><div class="meta"><strong>iPhone gift ki asli kahani 👀</strong><small>Karwa Chauth surprise</small></div></a>
-        <a class="short card-link" href="https://www.youtube.com/shorts/uwVQSVI1Ehk"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uwVQSVI1Ehk/oar2.jpg" alt="" /><em>Comedy</em></div><div class="meta"><strong>EMI, Karwa Chauth &amp; Diwali at once</strong><small>The real struggle</small></div></a>
-      </div>
-    </section>
-
-    <section id="series" class="reveal">
-      <h2>Binge a series.</h2>
-      <p class="sub">Every trip and story, in order.</p>
-      <div class="series">
-        <a href="https://www.youtube.com/playlist?list=PLYu0SerSIv-I"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/CEy6gMPDEC0/maxresdefault.jpg" alt="" /><span class="count">5 videos</span></div><div class="meta"><strong>XUV 7XO Ownership Diaries 🚘</strong><small>Delivery, service, fuel cost</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLNG0zUlA3Mzs"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="" /><span class="count">4 videos</span></div><div class="meta"><strong>Himachal Trip 🏔️</strong><small>Shimla, Narkanda, Kinnaur</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLU1E5PNIcMAc"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/rkqyRF57fB4/maxresdefault.jpg" alt="" /><span class="count">4 videos</span></div><div class="meta"><strong>Bali Trip 🇮🇩</strong><small>Our first trip abroad</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLPEhsESUDODs"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/PDvlwdV8BAE/oar2.jpg" alt="" /><span class="count">5 videos</span></div><div class="meta"><strong>iPhone 17 Surprise Series 📱</strong><small>Part 1 to the full story</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLItTuPRdDVkg"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/cGvbLoOb6uc/maxresdefault.jpg" alt="" /><span class="count">5 videos</span></div><div class="meta"><strong>Hyderabad Travel 📍</strong><small>Temples, road trips, festivals</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLJp2jWKcQPP4"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/f0KftHTgdsQ/maxresdefault.jpg" alt="" /><span class="count">3 videos</span></div><div class="meta"><strong>Indore Vlogs ❤️</strong><small>Cricket, trips, family masti</small></div></a>
-        <a href="https://www.youtube.com/playlist?list=PLMgxbn4LE_rw"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/IUqYtr4QdH4/oar2.jpg" alt="" /><span class="count">4 videos</span></div><div class="meta"><strong>Indian Festivals 🪔</strong><small>Navratri, Dussehra, Diwali</small></div></a>
-        <a href="https://www.youtube.com/@VibeWithAaruu/playlists"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/h6yglu7Wwgg/maxresdefault.jpg" alt="" /><span class="count">All</span></div><div class="meta"><strong>All playlists →</strong><small>Weddings, reviews and more</small></div></a>
-      </div>
-    </section>
-
-    <section id="collab" class="reveal">
-      <h2>Brand collabs.</h2>
-      <p class="sub">Brands we’ve worked with and products we’ve reviewed on the channel.</p>
-      <div class="collabs">
-        <a class="collab" href="https://www.youtube.com/shorts/QCGHhoQ2gDQ"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/QCGHhoQ2gDQ/oar2.jpg" alt="" /><em>Paid partnership</em></div><div class="meta"><strong>Mokshima</strong><small>Karungali Hanuman necklace, shot at Jakhu Temple</small><br /><span class="plat">YouTube short</span></div></a>
-        <a class="collab" href="https://www.youtube.com/shorts/uc8Rbaua3fU"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg" alt="" /><em>Collab</em></div><div class="meta"><strong>Hollyland</strong><small>Lark A1 wireless mic unboxing</small><br /><span class="plat">YouTube + Instagram</span></div></a>
-        <a class="collab" href="https://www.youtube.com/watch?v=4rHig0QSWt8"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/4rHig0QSWt8/maxresdefault.jpg" alt="" /><em>Review</em></div><div class="meta"><strong>Brillare</strong><small>2% salicylic face wash, honest review</small><br /><span class="plat">YouTube</span></div></a>
-        <a class="collab" href="https://www.youtube.com/shorts/qKnEqYeM85k"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/qKnEqYeM85k/oar2.jpg" alt="" /><em>Review</em></div><div class="meta"><strong>HRX · Myntra</strong><small>Joggers delivered in 10 minutes</small><br /><span class="plat">YouTube short</span></div></a>
-        <a class="collab" href="https://www.youtube.com/shorts/TE1wmRavCnA"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/TE1wmRavCnA/oar2.jpg" alt="" /><em>Review</em></div><div class="meta"><strong>Campus</strong><small>Sneakers review</small><br /><span class="plat">YouTube short</span></div></a>
-        <a class="collab" href="https://www.youtube.com/watch?v=ah9kLAfMPb0"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/ah9kLAfMPb0/maxresdefault.jpg" alt="" /><em>Review</em></div><div class="meta"><strong>MARS Cosmetics</strong><small>Fantasy palette and ₹49 lip liner</small><br /><span class="plat">YouTube</span></div></a>
-        <a class="collab" href="https://www.youtube.com/watch?v=fpIZEMr5Vpw"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/fpIZEMr5Vpw/maxresdefault.jpg" alt="" /><em>Review</em></div><div class="meta"><strong>Blue Heaven</strong><small>Kajal and mascara under ₹99</small><br /><span class="plat">YouTube</span></div></a>
-        <a class="collab" href="https://www.instagram.com/reel/De12NAbycxv/"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg" alt="" /><em>Instagram</em></div><div class="meta"><strong>Hollyland on Instagram</strong><small>Collab reel with @hollyland.india</small><br /><span class="plat">Instagram reel</span></div></a>
-      </div>
-      <div class="collab-cta">
+  <main id="top">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
         <div>
-          <p class="kicker">Work with us</p>
-          <h2>Let’s create together.</h2>
-          <ul>
-            <li>67K+ subscribers, 6 crore+ views</li>
-            <li>Audience: 87% India, mostly 18–44, almost equal men and women</li>
-            <li>Shorts, full vlogs, Instagram reels and product integrations</li>
-          </ul>
-          <p class="sub">Write to either of us. We reply to every brand enquiry.</p>
+          <div class="eyebrow fade-up" style="--d:.2s"><b>NEW</b> Himachal trip is live 🏔️</div>
+          <h1 aria-label="Vibe with Aaruu">
+            <span class="line" aria-hidden="true" data-chars>VIBE<span class="serif">with</span></span>
+            <span class="line grad-text" aria-hidden="true" data-chars>AARUU</span>
+          </h1>
+          <p class="lede fade-up" style="--d:.7s">Hi, I’m Aarushi, and this is our channel with Harshit. <b>Couple travel, our Mahindra XUV 7XO diaries, festivals</b> and the everyday moments that never make the script.</p>
+          <div class="cta fade-up" style="--d:.85s">
+            <a class="btn sub magnetic" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">
+              <svg class="yt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+              Subscribe · it’s free
+            </a>
+            <a class="btn ghost magnetic" href="https://www.youtube.com/playlist?list=PLNG0zUlA3Mzs">Watch the Himachal trip <span class="arrow">→</span></a>
+          </div>
+          <div class="avatars fade-up" style="--d:1s">
+            <div class="stack-av">
+              <img src="https://i.ytimg.com/vi/52quDx40ugs/default.jpg" alt="" />
+              <img src="https://i.ytimg.com/vi/rkqyRF57fB4/default.jpg" alt="" />
+              <img src="https://i.ytimg.com/vi/CEy6gMPDEC0/default.jpg" alt="" />
+            </div>
+            <span><b>67K+</b> people already vibing with us</span>
+          </div>
         </div>
-        <div class="mails">
-          <a class="btn ghost" href="mailto:harshitmodi98@gmail.com?subject=Collab%20with%20Vibe%20With%20Aaruu">harshitmodi98@gmail.com</a>
-          <a class="btn ghost" href="mailto:lifewithaarushi661@gmail.com?subject=Collab%20with%20Vibe%20With%20Aaruu">lifewithaarushi661@gmail.com</a>
+
+        <div class="stage fade-up" style="--d:.5s" id="stage">
+          <div class="phones" id="phones">
+            <a class="phone p1" href="https://www.youtube.com/shorts/kun62Sz8o5o" data-cursor="Play"><span class="notch"></span><img src="https://i.ytimg.com/vi/kun62Sz8o5o/oar2.jpg" alt="9-to-5 vs mountain views" /><span class="cap">9-to-5 vs pahadon ke nazare</span></a>
+            <a class="phone p2" href="https://www.youtube.com/shorts/krchCujadJk" data-cursor="Play"><span class="notch"></span><img src="https://i.ytimg.com/vi/krchCujadJk/oar2.jpg" alt="Do you trust me" /><span class="cap">Do you trust me? 😂</span></a>
+            <a class="phone p3" href="https://www.youtube.com/shorts/52quDx40ugs" data-cursor="Play"><span class="notch"></span><span class="live">NEW · HIMACHAL</span><img src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="Salary aate hi pahadon mein" /><span class="cap">Salary aate hi pahadon mein 🏔️<small>@VibeWithAaruu · Shorts</small></span></a>
+          </div>
+          <a class="badge" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1" aria-label="Subscribe now">
+            <svg viewBox="0 0 128 128" aria-hidden="true"><defs><path id="circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0" /></defs><text><textPath href="#circ">subscribe now • subscribe now • </textPath></text></svg>
+            <span class="play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff" /></svg></span>
+          </a>
+          <div class="float-chip c1"><b>6 Cr+</b>views 🔥</div>
+          <div class="float-chip c2"><b>240+</b>videos 🎬</div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><i></i>Scroll</div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquees" aria-hidden="true">
+      <div class="marquee m1">
+        <div class="track"><span>Himachal trip<i>✦</i></span><span>XUV 7XO diaries<i>✦</i></span><span>Bali, Indonesia<i>✦</i></span><span>iPhone 17 surprise<i>✦</i></span><span>Holkar Stadium, IND vs WI<i>✦</i></span><span>Garba nights &amp; Ravan Dahan<i>✦</i></span><span>Hyderabad road trips<i>✦</i></span><span>Janapav family trip<i>✦</i></span></div>
+      </div>
+      <div class="marquee m2">
+        <div class="track"><span>real couple life<i>●</i></span><span>NO FILTER<i>●</i></span><span>road trips<i>●</i></span><span>FESTIVALS<i>●</i></span><span>everyday comedy<i>●</i></span><span>NEW SHORTS DAILY<i>●</i></span><span>made in India<i>●</i></span><span>WEEKLY VLOGS<i>●</i></span></div>
+      </div>
+    </div>
+
+    <!-- STATS BENTO -->
+    <section id="stats" aria-label="YouTube totals">
+      <div class="wrap">
+        <div class="bento">
+          <div class="tile big reveal">
+            <span class="k">Subscribers on YouTube</span>
+            <div>
+              <div class="n"><span class="count grad-text" data-to="67" data-suffix="K+">67K+</span></div>
+              <div class="bar-row" aria-hidden="true">
+                <i style="--h:.18"></i><i style="--h:.24"></i><i style="--h:.3"></i><i style="--h:.38"></i><i style="--h:.46"></i><i style="--h:.55"></i><i style="--h:.62"></i><i style="--h:.72"></i><i style="--h:.84"></i><i style="--h:1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="tile reveal" style="--d:.08s"><span class="ic">👀</span><div><div class="n"><span class="count" data-to="6" data-suffix=" Cr+">6 Cr+</span></div><span class="k">total views</span></div></div>
+          <div class="tile reveal" style="--d:.16s"><span class="ic">🎬</span><div><div class="n"><span class="count" data-to="240" data-suffix="+">240+</span></div><span class="k">videos & shorts</span></div></div>
+          <div class="tile reveal" style="--d:.24s"><span class="ic">🇮🇳</span><div><div class="n"><span class="count" data-to="87" data-suffix="%">87%</span></div><span class="k">audience from India</span></div></div>
+          <a class="tile yt-tile reveal" style="--d:.32s" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">
+            <span class="k">New vlogs weekly · shorts almost daily</span>
+            <span class="go">Join the fam <span>↗</span></span>
+          </a>
+        </div>
+        <p class="note">YouTube totals as of November 2026 · @VibeWithAaruu · India</p>
+      </div>
+    </section>
+
+    <!-- MOST WATCHED -->
+    <section id="hits">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Top 3 of all time</div><h2 class="split">Most <span class="serif">watched.</span></h2></div>
+          <p class="reveal">The three shorts that brought most of you here. Crores of views, and counting.</p>
+        </div>
+        <div class="hits">
+          <a class="card hit tilt reveal" href="https://www.youtube.com/shorts/AUoMR9zm7pA" data-cursor="Play">
+            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/AUoMR9zm7pA/oar2.jpg" alt="A mother's sacrifice" /></div>
+            <span class="rank">01</span>
+            <div class="over"><div class="views grad-text">3.77 Cr<small>views</small></div><strong>A mother’s sacrifice that will leave you speechless</strong></div>
+            <span class="glare"></span>
+          </a>
+          <a class="card hit tilt reveal" style="--d:.1s" href="https://www.youtube.com/shorts/B5wpAdjEcB4" data-cursor="Play">
+            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/B5wpAdjEcB4/oar2.jpg" alt="Our first international flight" /></div>
+            <span class="rank">02</span>
+            <div class="over"><div class="views grad-text">1.33 Cr<small>views</small></div><strong>Our first international flight</strong></div>
+            <span class="glare"></span>
+          </a>
+          <a class="card hit tilt reveal" style="--d:.2s" href="https://www.youtube.com/shorts/7l2O_Bl3BAs" data-cursor="Play">
+            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/7l2O_Bl3BAs/oar2.jpg" alt="Bali's sacred cleansing ritual" /></div>
+            <span class="rank">03</span>
+            <div class="over"><div class="views grad-text">54 L<small>views</small></div><strong>We did Bali’s sacred cleansing ritual</strong></div>
+            <span class="glare"></span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="instagram" class="reveal">
-      <h2>On Instagram.</h2>
-      <p class="sub">The channel page, plus our personal profiles.</p>
-      <div class="ig">
-        <a class="main" href="https://www.instagram.com/vibe.with.aaruu/"><span class="ig-mark">IG</span><h3>Vibe With Aaruu</h3><p>@vibe.with.aaruu</p><small>Channel page →</small></a>
-        <a href="https://www.instagram.com/modi_aarushi/"><span class="ig-mark">IG</span><h3>Aarushi</h3><p>@modi_aarushi</p><small>Open profile →</small></a>
-        <a href="https://www.instagram.com/harshittt_modi_/"><span class="ig-mark">IG</span><h3>Harshit</h3><p>@harshittt_modi_</p><small>Open profile →</small></a>
-        <a href="https://www.instagram.com/knottedhearts_/"><span class="ig-mark">IG</span><h3>Knotted Hearts</h3><p>@knottedhearts_</p><small>Open profile →</small></a>
+    <!-- LONG VIDEOS -->
+    <section id="latest">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Full vlogs</div><h2 class="split">Longer <span class="serif">watches.</span></h2></div>
+          <p class="reveal">Our new car, Bali, match day and family trips. Grab chai, this is the good stuff.</p>
+        </div>
+        <div class="wall">
+          <a class="card feature reveal" href="https://www.youtube.com/watch?v=CEy6gMPDEC0" data-cursor="Watch">
+            <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/CEy6gMPDEC0/maxresdefault.jpg" alt="Mahindra XUV 7XO first service" /></div>
+            <span class="play-big" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff" /></svg></span>
+            <div class="shade">
+              <span class="tagline">🚘 XUV 7XO diaries · full video</span>
+              <h3>First service: ₹4,200 repair for free?</h3>
+              <p>Cost, mileage and our honest service-centre experience in Indore.</p>
+            </div>
+          </a>
+          <div class="stack">
+            <a class="card long reveal" style="--d:.05s" href="https://www.youtube.com/watch?v=L0aOG0K_DVk" data-cursor="Watch">
+              <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/L0aOG0K_DVk/maxresdefault.jpg" alt="" /></div>
+              <div class="meta"><strong>XUV 7XO delivery: parents’ reaction 🥹</strong><span class="dur">14 min · family surprise</span></div>
+            </a>
+            <a class="card long reveal" style="--d:.1s" href="https://www.youtube.com/watch?v=rkqyRF57fB4" data-cursor="Watch">
+              <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/rkqyRF57fB4/maxresdefault.jpg" alt="" /></div>
+              <div class="meta"><strong>3 places in Bali beyond the beaches</strong><span class="dur">6 min · North Bali</span></div>
+            </a>
+            <a class="card long reveal" style="--d:.15s" href="https://www.youtube.com/watch?v=f0KftHTgdsQ" data-cursor="Watch">
+              <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/f0KftHTgdsQ/maxresdefault.jpg" alt="" /></div>
+              <div class="meta"><strong>IND vs WI at Holkar Stadium</strong><span class="dur">Full match-day vlog · Indore</span></div>
+            </a>
+            <a class="card long reveal" style="--d:.2s" href="https://www.youtube.com/watch?v=c6rJJGntyNI" data-cursor="Watch">
+              <div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/c6rJJGntyNI/maxresdefault.jpg" alt="" /></div>
+              <div class="meta"><strong>Janapav family road trip 🐒</strong><span class="dur">Bhagwan Parshuram janmasthali</span></div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="reveal">
-      <h2>What you’ll find.</h2>
-      <p class="sub">From the channel, in our own words.</p>
-      <div class="about">
-        <article>
-          <p class="kicker">01 ♥</p>
-          <h3>Real couple moments</h3>
-          <p>Surprises, little drives and everyday fun. Including the high-maintenance things in Harshit’s life.</p>
-        </article>
-        <article>
-          <p class="kicker">02 ✈</p>
-          <h3>Travel and road trips</h3>
-          <p>Bali, Himachal, Hyderabad, temples and trips with our XUV 7XO, with costs and tips you can use.</p>
-        </article>
-        <article>
-          <p class="kicker">03 ✦</p>
-          <h3>Festivals and relatable life</h3>
-          <p>Garba, Dussehra, Diwali safai, EMIs and the “that’s so me” moments. No filter, no pretend.</p>
-        </article>
+    <!-- SHORTS -->
+    <section id="shorts">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Fresh drops</div><h2 class="split">New <span class="serif">shorts.</span></h2></div>
+          <div class="arrows"><button id="prev" aria-label="Previous shorts">←</button><button id="next" aria-label="Next shorts">→</button></div>
+        </div>
+        <div class="reel-wrap reveal">
+          <div class="reel" id="reel">
+            <a class="card" href="https://www.youtube.com/shorts/krchCujadJk" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/krchCujadJk/oar2.jpg" alt="" /></div><span class="pill hot">Himachal</span><div class="meta"><strong>Do you trust me? 😂</strong><small>Couple moments</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/kun62Sz8o5o" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/kun62Sz8o5o/oar2.jpg" alt="" /></div><span class="pill hot">Himachal</span><div class="meta"><strong>Quit your 9-to-5, come to the mountains</strong><small>Narkanda views</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/52quDx40ugs" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="" /></div><span class="pill hot">Himachal</span><div class="meta"><strong>Salary aate hi pahadon mein</strong><small>Mountain mornings</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/1IV5VMACwg8" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/1IV5VMACwg8/oar2.jpg" alt="" /></div><span class="pill">XUV 7XO</span><div class="meta"><strong>Galaxy Grey looks stunning</strong><small>Cinematic car short</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/Ap_QSd28soA" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/Ap_QSd28soA/oar2.jpg" alt="" /></div><span class="pill">Couple</span><div class="meta"><strong>My favourite co-passenger ❤️</strong><small>Little drives, big memories</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/r9ecvZ1LzsM" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/r9ecvZ1LzsM/oar2.jpg" alt="" /></div><span class="pill">Surprise</span><div class="meta"><strong>Husband ne diya iPhone surprise 🥺</strong><small>Wait for her reaction</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/TLynPbG0J0k" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/TLynPbG0J0k/oar2.jpg" alt="" /></div><span class="pill">Story</span><div class="meta"><strong>iPhone gift ki asli kahani 👀</strong><small>Karwa Chauth surprise</small></div></a>
+            <a class="card" href="https://www.youtube.com/shorts/uwVQSVI1Ehk" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uwVQSVI1Ehk/oar2.jpg" alt="" /></div><span class="pill">Comedy</span><div class="meta"><strong>EMI, Karwa Chauth &amp; Diwali at once</strong><small>The real struggle</small></div></a>
+          </div>
+          <div class="reel-progress" aria-hidden="true"><i id="reelBar"></i></div>
+        </div>
       </div>
     </section>
 
+    <!-- SERIES -->
+    <section id="series">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Playlists</div><h2 class="split">Binge a <span class="serif">series.</span></h2></div>
+          <p class="reveal">Every trip and story, in order. Start from episode one.</p>
+        </div>
+        <div class="series">
+          <a class="card tilt reveal" href="https://www.youtube.com/playlist?list=PLYu0SerSIv-I" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/CEy6gMPDEC0/maxresdefault.jpg" alt="" /><span class="vcount">▶ 5 videos</span></div><div class="meta"><strong>XUV 7XO Ownership Diaries 🚘</strong><small>Delivery, service, fuel cost</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.05s" href="https://www.youtube.com/playlist?list=PLNG0zUlA3Mzs" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/52quDx40ugs/oar2.jpg" alt="" /><span class="vcount">▶ 4 videos</span></div><div class="meta"><strong>Himachal Trip 🏔️</strong><small>Shimla, Narkanda, Kinnaur</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.1s" href="https://www.youtube.com/playlist?list=PLU1E5PNIcMAc" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/rkqyRF57fB4/maxresdefault.jpg" alt="" /><span class="vcount">▶ 4 videos</span></div><div class="meta"><strong>Bali Trip 🇮🇩</strong><small>Our first trip abroad</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.15s" href="https://www.youtube.com/playlist?list=PLPEhsESUDODs" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/PDvlwdV8BAE/oar2.jpg" alt="" /><span class="vcount">▶ 5 videos</span></div><div class="meta"><strong>iPhone 17 Surprise Series 📱</strong><small>Part 1 to the full story</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" href="https://www.youtube.com/playlist?list=PLItTuPRdDVkg" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/cGvbLoOb6uc/maxresdefault.jpg" alt="" /><span class="vcount">▶ 5 videos</span></div><div class="meta"><strong>Hyderabad Travel 📍</strong><small>Temples, road trips, festivals</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.05s" href="https://www.youtube.com/playlist?list=PLJp2jWKcQPP4" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/f0KftHTgdsQ/maxresdefault.jpg" alt="" /><span class="vcount">▶ 3 videos</span></div><div class="meta"><strong>Indore Vlogs ❤️</strong><small>Cricket, trips, family masti</small></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.1s" href="https://www.youtube.com/playlist?list=PLMgxbn4LE_rw" data-cursor="Binge"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/IUqYtr4QdH4/oar2.jpg" alt="" /><span class="vcount">▶ 4 videos</span></div><div class="meta"><strong>Indian Festivals 🪔</strong><small>Navratri, Dussehra, Diwali</small></div><span class="glare"></span></a>
+          <a class="card all reveal" style="--d:.15s" href="https://www.youtube.com/@VibeWithAaruu/playlists"><b>All playlists</b><small>Weddings, reviews and more</small><span class="circ">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLABS -->
+    <section id="collab">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Partnerships</div><h2 class="split">Brand <span class="serif">collabs.</span></h2></div>
+          <p class="reveal">Brands we’ve worked with and products we’ve reviewed on the channel.</p>
+        </div>
+        <div class="brands reveal"><span>Mokshima</span><span>Hollyland</span><span>Brillare</span><span>HRX · Myntra</span><span>Campus</span><span>MARS Cosmetics</span><span>Blue Heaven</span></div>
+        <div class="collabs">
+          <a class="card tilt reveal" href="https://www.youtube.com/shorts/QCGHhoQ2gDQ" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/QCGHhoQ2gDQ/oar2.jpg" alt="" /></div><span class="pill hot">Paid partnership</span><div class="meta"><strong>Mokshima</strong><small>Karungali Hanuman necklace, shot at Jakhu Temple</small><br /><span class="plat">YouTube short</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.05s" href="https://www.youtube.com/shorts/uc8Rbaua3fU" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg" alt="" /></div><span class="pill hot">Collab</span><div class="meta"><strong>Hollyland</strong><small>Lark A1 wireless mic unboxing</small><br /><span class="plat">YouTube + Instagram</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.1s" href="https://www.youtube.com/watch?v=4rHig0QSWt8" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/4rHig0QSWt8/maxresdefault.jpg" alt="" /></div><span class="pill">Review</span><div class="meta"><strong>Brillare</strong><small>2% salicylic face wash, honest review</small><br /><span class="plat">YouTube</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.15s" href="https://www.youtube.com/shorts/qKnEqYeM85k" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/qKnEqYeM85k/oar2.jpg" alt="" /></div><span class="pill">Review</span><div class="meta"><strong>HRX · Myntra</strong><small>Joggers delivered in 10 minutes</small><br /><span class="plat">YouTube short</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" href="https://www.youtube.com/shorts/TE1wmRavCnA" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/TE1wmRavCnA/oar2.jpg" alt="" /></div><span class="pill">Review</span><div class="meta"><strong>Campus</strong><small>Sneakers review</small><br /><span class="plat">YouTube short</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.05s" href="https://www.youtube.com/watch?v=ah9kLAfMPb0" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/ah9kLAfMPb0/maxresdefault.jpg" alt="" /></div><span class="pill">Review</span><div class="meta"><strong>MARS Cosmetics</strong><small>Fantasy palette and ₹49 lip liner</small><br /><span class="plat">YouTube</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.1s" href="https://www.youtube.com/watch?v=fpIZEMr5Vpw" data-cursor="Play"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/fpIZEMr5Vpw/maxresdefault.jpg" alt="" /></div><span class="pill">Review</span><div class="meta"><strong>Blue Heaven</strong><small>Kajal and mascara under ₹99</small><br /><span class="plat">YouTube</span></div><span class="glare"></span></a>
+          <a class="card tilt reveal" style="--d:.15s" href="https://www.instagram.com/reel/De12NAbycxv/" data-cursor="View"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/uc8Rbaua3fU/oar2.jpg" alt="" /></div><span class="pill">Instagram</span><div class="meta"><strong>Hollyland on Instagram</strong><small>Collab reel with @hollyland.india</small><br /><span class="plat">Instagram reel</span></div><span class="glare"></span></a>
+        </div>
+
+        <div class="work reveal">
+          <div>
+            <div class="tag">Work with us</div>
+            <h2>Let’s create <span class="serif grad-text">together.</span></h2>
+            <ul class="facts">
+              <li>67K+ subscribers, 6 crore+ views</li>
+              <li>Audience: 87% India, mostly 18–44, almost equal men and women</li>
+              <li>Shorts, full vlogs, Instagram reels and product integrations</li>
+            </ul>
+          </div>
+          <div class="mails">
+            <p style="margin:0 0 4px;color:var(--muted)">Write to either of us. We reply to every brand enquiry.</p>
+            <div class="mail">
+              <a href="mailto:harshitmodi98@gmail.com?subject=Collab%20with%20Vibe%20With%20Aaruu"><small>Harshit</small><span>harshitmodi98@gmail.com</span></a>
+              <button class="copy" data-copy="harshitmodi98@gmail.com">Copy</button>
+            </div>
+            <div class="mail">
+              <a href="mailto:lifewithaarushi661@gmail.com?subject=Collab%20with%20Vibe%20With%20Aaruu"><small>Aarushi</small><span>lifewithaarushi661@gmail.com</span></a>
+              <button class="copy" data-copy="lifewithaarushi661@gmail.com">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section id="instagram">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">Follow along</div><h2 class="split">On <span class="serif">Instagram.</span></h2></div>
+          <p class="reveal">The channel page, plus our personal profiles.</p>
+        </div>
+        <div class="ig">
+          <a class="main reveal" href="https://www.instagram.com/vibe.with.aaruu/"><span class="ig-mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></span><h3>Vibe With Aaruu</h3><p>@vibe.with.aaruu</p><small>Channel page ↗</small></a>
+          <a class="reveal" style="--d:.06s" href="https://www.instagram.com/modi_aarushi/"><span class="ig-mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></span><h3>Aarushi</h3><p>@modi_aarushi</p><small>Open profile ↗</small></a>
+          <a class="reveal" style="--d:.12s" href="https://www.instagram.com/harshittt_modi_/"><span class="ig-mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></span><h3>Harshit</h3><p>@harshittt_modi_</p><small>Open profile ↗</small></a>
+          <a class="reveal" style="--d:.18s" href="https://www.instagram.com/knottedhearts_/"><span class="ig-mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></span><h3>Knotted Hearts</h3><p>@knottedhearts_</p><small>Open profile ↗</small></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <div class="head">
+          <div><div class="tag">The vibe</div><h2 class="split">What you’ll <span class="serif">find.</span></h2></div>
+          <p class="reveal">From the channel, in our own words.</p>
+        </div>
+        <div class="about">
+          <article class="tile reveal"><span class="num grad-text">01</span><span class="emo">💞</span><h3>Real couple moments</h3><p>Surprises, little drives and everyday fun. Including the high-maintenance things in Harshit’s life.</p></article>
+          <article class="tile reveal" style="--d:.08s"><span class="num grad-text">02</span><span class="emo">✈️</span><h3>Travel and road trips</h3><p>Bali, Himachal, Hyderabad, temples and trips with our XUV 7XO, with costs and tips you can use.</p></article>
+          <article class="tile reveal" style="--d:.16s"><span class="num grad-text">03</span><span class="emo">🪔</span><h3>Festivals and relatable life</h3><p>Garba, Dussehra, Diwali safai, EMIs and the “that’s so me” moments. No filter, no pretend.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINALE -->
     <section class="finale">
-      <div>
-        <h2>Come vibe with us.</h2>
-        <p>Join 67K+ people who already subscribed. New vlogs every week and new shorts almost every day. Turn the bell on 🔔 so the next one finds you.</p>
+      <div class="orb" aria-hidden="true"></div>
+      <div class="wrap">
+        <h2 class="split">Come <span class="serif">vibe</span> with us.</h2>
+        <p class="reveal">Join 67K+ people who already subscribed. New vlogs every week and new shorts almost every day. Turn the bell on 🔔 so the next one finds you.</p>
+        <a class="btn sub magnetic reveal" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">
+          <svg class="yt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          Subscribe to Vibe With Aaruu
+        </a>
       </div>
-      <a class="btn" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">Subscribe to Vibe With Aaruu</a>
     </section>
+  </main>
 
-    <footer>
-      <div>© 2026 Vibe With Aaruu · <a href="https://www.youtube.com/@VibeWithAaruu">youtube.com/@VibeWithAaruu</a></div>
-      <div>Collabs · <a href="mailto:harshitmodi98@gmail.com">harshitmodi98@gmail.com</a></div>
-    </footer>
-  </div>
+  <footer>
+    <div class="wrap">
+      <div class="giant" aria-hidden="true">VIBE WITH AARUU</div>
+      <div class="foot">
+        <div>© 2026 Vibe With Aaruu · <a href="https://www.youtube.com/@VibeWithAaruu">youtube.com/@VibeWithAaruu</a></div>
+        <div>Collabs · <a href="mailto:harshitmodi98@gmail.com">harshitmodi98@gmail.com</a></div>
+      </div>
+    </div>
+  </footer>
 
-  <a class="m-sub" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">▶ Subscribe on YouTube</a>
+  <a class="m-sub" id="mSub" href="https://www.youtube.com/@VibeWithAaruu?sub_confirmation=1">▶ Subscribe on YouTube</a>
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied ✓</div>
 
   <script>
-    // reading progress bar
-    const bar = document.getElementById('progress');
-    document.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
-    }, { passive: true });
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-    // marquee: duplicate the items once in JS for a seamless loop (keeps the HTML free of repeats)
-    const track = document.getElementById('track');
-    track.innerHTML += track.innerHTML;
-
-    // fall back to a smaller thumbnail when a high-res one is missing
-    document.querySelectorAll('img[src*="i.ytimg.com"]').forEach((img) => {
-      img.addEventListener('error', () => {
-        if (!img.dataset.fallback) {
-          img.dataset.fallback = '1';
-          img.src = img.src.replace(/(maxresdefault|oar2)\.jpg$/, 'hqdefault.jpg');
+    // ---- split hero letters ----
+    let ci = 0;
+    $$('[data-chars]').forEach((line) => {
+      [...line.childNodes].forEach((node) => {
+        if (node.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          [...node.textContent].forEach((c) => {
+            const s = document.createElement('span');
+            s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', ci++);
+            frag.appendChild(s);
+          });
+          node.replaceWith(frag);
+        } else {
+          node.classList.add('ch'); node.style.setProperty('--i', ci++);
         }
+      });
+      if (line.classList.contains('grad-text')) {
+        line.classList.remove('grad-text');
+        const chs = $$('.ch', line), n = chs.length;
+        chs.forEach((c, i) => {
+          c.classList.add('gch');
+          c.style.backgroundSize = `${n * 100}% 100%`;
+          c.style.backgroundPosition = `${n > 1 ? (i / (n - 1)) * 100 : 0}% 0`;
+        });
+      }
+    });
+
+    // ---- split section headings into words ----
+    $$('.split').forEach((el) => {
+      let wi = 0;
+      const wrapWords = (node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach((part) => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+              const w = document.createElement('span'); w.className = 'w';
+              const i = document.createElement('span'); i.textContent = part; i.style.setProperty('--i', wi++);
+              w.appendChild(i); frag.appendChild(w);
+            });
+            n.replaceWith(frag);
+          } else {
+            const w = document.createElement('span'); w.className = 'w';
+            n.style.setProperty('--i', wi++);
+            n.replaceWith(w); w.appendChild(n);
+          }
+        });
+      };
+      wrapWords(el);
+    });
+
+    // ---- preloader ----
+    const loader = $('#loader');
+    const finishLoad = () => {
+      loader.classList.add('done');
+      document.body.classList.remove('loading');
+      document.body.classList.add('ready');
+      setTimeout(() => loader.remove(), 1300);
+    };
+    if (reduce) { finishLoad(); }
+    else {
+      const num = $('#loaderNum'), bar = $('#loaderBar');
+      const t0 = performance.now(), dur = 1300;
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        num.textContent = String(Math.round(e * 100)).padStart(3, '0');
+        bar.style.width = e * 100 + '%';
+        if (p < 1) requestAnimationFrame(step); else setTimeout(finishLoad, 150);
+      };
+      requestAnimationFrame(step);
+    }
+
+    // ---- scroll: progress, nav hide, mobile CTA, active link ----
+    const prog = $('#progress'), navShell = $('#navShell'), mSub = $('#mSub');
+    let lastY = 0;
+    const onScroll = () => {
+      const h = document.documentElement, y = h.scrollTop, max = h.scrollHeight - h.clientHeight;
+      prog.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+      navShell.classList.toggle('hide', y > lastY && y > 400 && !$('#navLinks').classList.contains('open'));
+      mSub.classList.toggle('show', y > 500);
+      lastY = y;
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+
+    const links = $$('.nav-links a');
+    const secObs = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      links.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    ['hits', 'series', 'collab', 'instagram', 'about'].forEach((id) => secObs.observe(document.getElementById(id)));
+
+    // ---- mobile menu ----
+    const menuBtn = $('#menuBtn'), navLinks = $('#navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    links.forEach((a) => a.addEventListener('click', () => { navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }));
+
+    // ---- marquee: clone track for seamless loop ----
+    $$('.marquee').forEach((m) => { const t = $('.track', m); m.appendChild(t.cloneNode(true)); });
+
+    // ---- thumbnail fallback ----
+    $$('img[src*="i.ytimg.com"]').forEach((img) => {
+      img.addEventListener('error', () => {
+        if (!img.dataset.fallback) { img.dataset.fallback = '1'; img.src = img.src.replace(/(maxresdefault|oar2)\.jpg$/, 'hqdefault.jpg'); }
       });
     });
 
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // count-up stats
-    const run = (el) => {
-      const to = Number(el.dataset.to);
-      const suffix = el.dataset.suffix || '';
+    // ---- count-up ----
+    const countUp = (el) => {
       if (reduce) return;
-      const start = performance.now();
+      const to = Number(el.dataset.to), suffix = el.dataset.suffix || '', t0 = performance.now();
       const tick = (now) => {
-        const p = Math.min(1, (now - start) / 1200);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(to * eased).toLocaleString('en-IN') + suffix;
+        const p = Math.min(1, (now - t0) / 1600), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(to * e).toLocaleString('en-IN') + suffix;
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
     };
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        if (e.target.classList.contains('count')) run(e.target);
-        else e.target.classList.add('in');
-        io.unobserve(e.target);
+    // ---- reveal on scroll ----
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      $$('.count', e.target).forEach(countUp);
+      io.unobserve(e.target);
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal, .split').forEach((el) => io.observe(el));
+
+    // ---- toast + copy ----
+    const toast = $('#toast');
+    $$('.copy').forEach((b) => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copy); toast.textContent = 'Email copied ✓'; }
+      catch { toast.textContent = b.dataset.copy; }
+      toast.classList.add('show'); clearTimeout(toast._t);
+      toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+    }));
+
+    // ---- shorts reel: arrows, drag, progress ----
+    const reel = $('#reel'), reelBar = $('#reelBar');
+    const updateReel = () => {
+      const max = reel.scrollWidth - reel.clientWidth;
+      const vis = reel.clientWidth / reel.scrollWidth;
+      reelBar.style.width = vis * 100 + '%';
+      reelBar.style.transform = `translateX(${max > 0 ? (reel.scrollLeft / max) * ((1 - vis) / vis) * 100 : 0}%)`;
+    };
+    reel.addEventListener('scroll', updateReel, { passive: true });
+    addEventListener('resize', updateReel); updateReel();
+    $('#prev').addEventListener('click', () => reel.scrollBy({ left: -reel.clientWidth * .8, behavior: 'smooth' }));
+    $('#next').addEventListener('click', () => reel.scrollBy({ left: reel.clientWidth * .8, behavior: 'smooth' }));
+    if (fine) {
+      let down = false, sx = 0, sl = 0, moved = false;
+      reel.addEventListener('pointerdown', (e) => { down = true; moved = false; sx = e.clientX; sl = reel.scrollLeft; });
+      addEventListener('pointermove', (e) => {
+        if (!down) return;
+        const dx = e.clientX - sx;
+        if (Math.abs(dx) > 5) { moved = true; reel.classList.add('drag'); }
+        reel.scrollLeft = sl - dx;
       });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.count, .reveal').forEach((el) => io.observe(el));
+      addEventListener('pointerup', () => { down = false; setTimeout(() => reel.classList.remove('drag'), 0); });
+      reel.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
+    }
+
+    if (fine && !reduce) {
+      // ---- custom cursor ----
+      const cur = $('#cursor'), ring = $('#ring'), label = $('#ringLabel');
+      let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+      addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px, ${my}px)`; });
+      const loop = () => { rx += (mx - rx) * .16; ry += (my - ry) * .16; ring.style.transform = `translate(${rx}px, ${ry}px)`; requestAnimationFrame(loop); };
+      loop();
+      document.addEventListener('pointerover', (e) => {
+        const t = e.target.closest('[data-cursor]');
+        const a = e.target.closest('a, button');
+        ring.classList.toggle('label', !!t);
+        ring.classList.toggle('hover', !t && !!a);
+        if (t) label.textContent = t.dataset.cursor;
+      });
+
+      // ---- magnetic buttons ----
+      $$('.magnetic').forEach((el) => {
+        el.addEventListener('pointermove', (e) => {
+          const r = el.getBoundingClientRect();
+          el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`;
+        });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+      });
+
+      // ---- 3D tilt + glare ----
+      $$('.tilt').forEach((el) => {
+        const glare = $('.glare', el);
+        el.addEventListener('pointermove', (e) => {
+          const r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+          el.style.transform = `perspective(900px) rotateY(${(px - .5) * 10}deg) rotateX(${(.5 - py) * 10}deg) translateY(-4px)`;
+          if (glare) { glare.style.setProperty('--gx', px * 100 + '%'); glare.style.setProperty('--gy', py * 100 + '%'); }
+        });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+        el.style.transition = 'transform .4s cubic-bezier(.2,.8,.2,1), opacity .9s, filter .9s, border-color .3s, box-shadow .5s';
+      });
+
+      // ---- spotlight on tiles ----
+      $$('.tile').forEach((el) => el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', e.clientX - r.left + 'px'); el.style.setProperty('--my', e.clientY - r.top + 'px');
+      }));
+
+      // ---- hero phones parallax ----
+      const stage = $('#stage'), phones = $('#phones');
+      stage.addEventListener('pointermove', (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        phones.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 12}deg)`;
+      });
+      stage.addEventListener('pointerleave', () => { phones.style.transform = ''; });
+      phones.style.transition = 'transform .6s cubic-bezier(.2,.8,.2,1)';
+    }
   </script>
 </body>
 </html>
